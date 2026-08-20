@@ -41,3 +41,5 @@ Thumbs.db
 # Package manager lock files (optional to ignore if you don't want them tracked)
 # package-lock.json
 # yarn.lock
+PROXIMUX-WIREFRAME-SPEC.md
+.claude/launch.json

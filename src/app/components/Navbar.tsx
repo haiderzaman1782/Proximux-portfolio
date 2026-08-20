@@ -42,7 +42,7 @@ export function Navbar() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-full flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-1 touch-manipulation min-h-[44px]" style={{ fontFamily: 'Syne, sans-serif' }}>
+        <Link to="/" className="flex items-center gap-1 touch-manipulation min-h-[44px]" style={{ fontFamily: 'var(--font-syne)' }}>
           <span className="text-xl sm:text-2xl font-extrabold text-[#e8e8e0]">PROXIMUX</span>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--saas-lime)', display: 'inline-block' }}></span>
         </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={openBooking}
-            className="touch-manipulation min-h-[44px] px-5 sm:px-6 py-2 bg-[var(--saas-lime)] text-black rounded-[24px] text-sm lg:text-base font-medium transition-transform hover:scale-105 active:scale-95"
+            className="touch-manipulation min-h-[44px] px-5 sm:px-6 py-2 border border-[var(--saas-border)] hover:border-[var(--saas-lime)] text-[var(--saas-text)] rounded-[24px] text-sm lg:text-base font-medium transition-colors"
           >
             Book a Call
           </button>

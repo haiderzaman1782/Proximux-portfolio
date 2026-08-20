@@ -8,6 +8,7 @@ import { FeatureCard } from '../components/FeatureCard';
 import { Stat } from '../components/Stat';
 import { CountUp, FadeInSection, HeadingReveal } from '../components/anim';
 import { CtaBand } from '../components/CtaBand';
+import { HeroGlobe } from '../components/HeroGlobe';
 import { services } from '../data';
 
 export function HomePage() {
@@ -21,8 +22,9 @@ export function HomePage() {
       {/* Hero */}
       <section className="relative min-h-[82vh] md:min-h-[88vh] py-16 sm:py-20 md:py-24 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full border border-[rgba(200,241,53,0.12)] relative opacity-50">
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(200,241,53,0.06)_0%,transparent_70%)]"></div>
+          <div className="relative w-[340px] h-[340px] sm:w-[560px] sm:h-[560px] lg:w-[760px] lg:h-[760px]">
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(200,241,53,0.07)_0%,transparent_68%)]"></div>
+            <HeroGlobe />
           </div>
         </div>
 
@@ -66,7 +68,7 @@ export function HomePage() {
               onClick={openBooking}
               className="w-full sm:w-auto px-7 py-3 bg-[var(--saas-lime)] text-black rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-transform min-h-[44px] touch-manipulation whitespace-nowrap"
             >
-              Book a Technical Discovery Call
+              Request a Technical Discovery Call
               <ArrowRight size={16} />
             </motion.button>
             <Link

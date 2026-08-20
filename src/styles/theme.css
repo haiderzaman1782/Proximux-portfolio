@@ -67,8 +67,10 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-syne: "Syne", sans-serif;
-  --font-dm-sans: "DM Sans", sans-serif;
+  /* Site typeface — Figtree (free Google Font, closest match to Instagram Sans).
+     Both tokens point to Figtree so headings and body share one family. */
+  --font-syne: "Figtree", sans-serif;
+  --font-dm-sans: "Figtree", sans-serif;
 }
 
 @layer base {

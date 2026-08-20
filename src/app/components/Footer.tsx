@@ -51,7 +51,7 @@ export function Footer() {
 
         <div className="pt-8 border-t border-[var(--saas-border)] flex flex-col md:flex-row items-center justify-between gap-6 text-xs sm:text-sm text-[var(--saas-muted)]">
           <div className="flex-1 text-center md:text-left">
-            <p>© 2026 PROXIMUX. All rights reserved.</p>
+            <p>© PROXIMUX. All rights reserved.</p>
           </div>
           <div className="flex-1 flex flex-col md:flex-row items-center justify-center md:justify-end gap-4 sm:gap-8">
             <a href="tel:03194290197" className="hover:text-[var(--saas-lime)] transition-colors flex items-center gap-2">

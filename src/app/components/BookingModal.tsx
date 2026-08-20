@@ -1,15 +1,31 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CalendarDays } from 'lucide-react';
+import Cal, { getCalApi } from '@calcom/embed-react';
 
-// TODO: replace with your real Cal.com / Calendly booking link.
-export const CAL_URL = 'https://cal.com/proximux/discovery';
+// Proximux discovery-call scheduler. To change it, update both the namespace
+// and calLink below to your Cal.com "<user>/<event>" slug.
+const CAL_NAMESPACE = '30min';
+const CAL_LINK = 'haider-zaman-exnwci/30min';
 
 export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
+
+  // Configure the Cal embed once (dark theme + lime brand colour).
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      cal('ui', {
+        theme: 'dark',
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+        cssVarsPerTheme: { dark: { 'cal-brand': '#c8f135' } }
+      });
+    })();
+  }, []);
 
   return (
     <AnimatePresence>
@@ -27,7 +43,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 26, stiffness: 300 }}
-            className="relative z-[121] w-full max-w-3xl h-[82vh] bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+            className="relative z-[121] w-full max-w-3xl h-[85vh] bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-3xl shadow-2xl overflow-hidden flex flex-col"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--saas-border)] shrink-0">
               <div className="flex items-center gap-2 font-syne font-bold text-[var(--saas-text)]">
@@ -38,12 +54,22 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
                 <X size={22} />
               </button>
             </div>
-            <iframe
-              src={CAL_URL}
-              title="Book a discovery call with Proximux"
-              className="w-full flex-1 bg-white"
-              style={{ border: 0 }}
-            />
+
+            <div className="flex-1 overflow-auto bg-[var(--saas-dark-bg)]">
+              <Cal
+                namespace={CAL_NAMESPACE}
+                calLink={CAL_LINK}
+                style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+                config={{ layout: 'month_view', theme: 'dark' }}
+              />
+            </div>
+
+            <div className="shrink-0 px-6 py-3 border-t border-[var(--saas-border)] text-center">
+              <span className="text-xs text-[var(--saas-muted)]">
+                Trouble loading? Email{' '}
+                <a href="mailto:hello@proximux.online" className="text-[var(--saas-lime)] hover:underline">hello@proximux.online</a>
+              </span>
+            </div>
           </motion.div>
         </div>
       )}

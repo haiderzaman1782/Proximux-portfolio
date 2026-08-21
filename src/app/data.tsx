@@ -10,6 +10,28 @@ import { MobileDiagram } from './components/diagrams/MobileDiagram';
 // NOTE: every ‹...› below is a REAL number or asset you must supply before launch.
 // If you don't have it yet, cut the claim — do not estimate.
 
+// ─────────────────────────────────────────────────────────────────────
+// DEMO / PROOF LINKS — paste your real URLs here. Each matching button on
+// the Work page then opens that link instead of the booking form:
+//   • https://…  → opens in a new tab (live demo, Loom, repo, TestFlight)
+//   • tel:+92…   → dials the demo phone line
+//   • ''         → not set yet; button falls back to the "Book a call" form
+// ─────────────────────────────────────────────────────────────────────
+export const DEMO_LINKS = {
+  // Case A — RAG
+  ragDemo: '',           // "Try the live demo"
+  ragTeardown: '',       // "4-min teardown" (Loom)
+  ragArchitecture: '',   // "Architecture" (diagram / repo)
+  // Case B — Voice
+  voicePlay: '',         // "Play the call" (recording)
+  voiceCallLine: '',     // "Call the demo line"  e.g. 'tel:+92XXXXXXXXXX'
+  voiceFlow: '',         // "Call-flow" (diagram)
+  // Case C — Mobile
+  mobileFlow: '',        // "Open the flow" (prototype / Expo web)
+  mobileWalkthrough: '', // "Walkthrough" (Loom)
+  mobileTestflight: '',  // "TestFlight / APK"
+};
+
 export const services = [
   {
     title: "Enterprise RAG & Knowledge Engines",
@@ -91,9 +113,9 @@ export const proofCases = [
     headline: "Ask ‹400› pages a question. Get a cited answer in ‹XXms›.",
     metrics: ["‹XXms› p95 retrieval", "‹95%+› accuracy on ‹N›-question eval", "Citations on 100% of answers", "‹0› hallucinations in eval"],
     artifacts: [
-      { label: "Try the live demo", icon: <Zap size={14} /> },
-      { label: "4-min teardown", icon: <Play size={14} /> },
-      { label: "Architecture", icon: <GitBranch size={14} /> }
+      { label: "Try the live demo", icon: <Zap size={14} />, href: DEMO_LINKS.ragDemo },
+      { label: "4-min teardown", icon: <Play size={14} />, href: DEMO_LINKS.ragTeardown },
+      { label: "Architecture", icon: <GitBranch size={14} />, href: DEMO_LINKS.ragArchitecture }
     ]
   },
   {
@@ -103,9 +125,9 @@ export const proofCases = [
     headline: "Hear it book a real appointment — and sync it to the CRM live.",
     metrics: ["‹XXXms› voice-to-voice", "‹X/X› calls booked", "CRM write in ‹Xs›", "24/7 availability"],
     artifacts: [
-      { label: "Play the call", icon: <Play size={14} /> },
-      { label: "Call the demo line", icon: <PhoneCall size={14} /> },
-      { label: "Call-flow", icon: <GitBranch size={14} /> }
+      { label: "Play the call", icon: <Play size={14} />, href: DEMO_LINKS.voicePlay },
+      { label: "Call the demo line", icon: <PhoneCall size={14} />, href: DEMO_LINKS.voiceCallLine },
+      { label: "Call-flow", icon: <GitBranch size={14} />, href: DEMO_LINKS.voiceFlow }
     ]
   },
   {
@@ -115,9 +137,9 @@ export const proofCases = [
     headline: "60fps UI, sub-second loads — iOS and Android from one codebase.",
     metrics: ["‹XXXms› p95 API load", "‹Xs› cold start", "Offline-capable", "‹N› screens shipped"],
     artifacts: [
-      { label: "Open the flow", icon: <Zap size={14} /> },
-      { label: "Walkthrough", icon: <Play size={14} /> },
-      { label: "TestFlight / APK", icon: <ArrowUpRight size={14} /> }
+      { label: "Open the flow", icon: <Zap size={14} />, href: DEMO_LINKS.mobileFlow },
+      { label: "Walkthrough", icon: <Play size={14} />, href: DEMO_LINKS.mobileWalkthrough },
+      { label: "TestFlight / APK", icon: <ArrowUpRight size={14} />, href: DEMO_LINKS.mobileTestflight }
     ]
   }
 ];

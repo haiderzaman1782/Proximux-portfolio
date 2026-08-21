@@ -62,8 +62,82 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// --- RAG chatbot: full-text retrieve from Supabase + answer with an OpenAI-compatible LLM ---
+// Works with Groq (api.groq.com, gsk_ keys) OR xAI Grok (api.x.ai, xai_ keys) — just set the env vars.
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const LLM_API_URL = process.env.LLM_API_URL || 'https://api.groq.com/openai/v1/chat/completions';
+const LLM_API_KEY = process.env.LLM_API_KEY;
+const LLM_MODEL = process.env.LLM_MODEL || 'llama-3.1-8b-instant';
+
+const CHAT_SYSTEM = `You are the assistant on Proximux's website. Proximux is a two-founder AI engineering and software studio.
+Rules:
+- Answer ONLY using the numbered CONTEXT below. Do not use outside knowledge.
+- Cite the context you use inline, like [1] or [2].
+- If the CONTEXT does not contain the answer, say you don't have that detail and suggest booking a discovery call at proximux.online. Never invent facts, prices, or timelines.
+- Speak as Proximux ("we"). Be concise and friendly — 2 to 4 sentences.`;
+
+const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to get a precise answer is to book a 30-minute discovery call at proximux.online — you'll talk directly to an engineer.";
+
+app.post('/api/chat', async (req, res) => {
+  const question = String((req.body && req.body.question) || '').trim().slice(0, 500);
+  if (!question) return res.status(400).json({ error: 'Ask a question.' });
+  if (!SUPABASE_URL || !SUPABASE_KEY || !LLM_API_KEY) {
+    return res.status(500).json({ error: 'Chatbot is not configured (missing SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, or LLM_API_KEY).' });
+  }
+
+  const t0 = Date.now();
+  try {
+    // 1. Retrieve relevant chunks (Postgres full-text search via Supabase RPC).
+    const rpc = await fetch(`${SUPABASE_URL}/rest/v1/rpc/match_chunks`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ query_text: question, match_count: 5 })
+    });
+    if (!rpc.ok) throw new Error(`Supabase ${rpc.status}: ${await rpc.text()}`);
+    const hits = await rpc.json();
+
+    if (!Array.isArray(hits) || hits.length === 0) {
+      return res.json({ answer: CHAT_REFUSAL, sources: [], latency_ms: Date.now() - t0, grounded: false });
+    }
+
+    // 2. Generate a grounded, cited answer.
+    const context = hits.map((h, i) => `[${i + 1}] (${h.title}) ${h.content}`).join('\n\n');
+    const llmRes = await fetch(LLM_API_URL, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${LLM_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: LLM_MODEL,
+        temperature: 0.2,
+        max_tokens: 500,
+        messages: [
+          { role: 'system', content: CHAT_SYSTEM },
+          { role: 'user', content: `CONTEXT:\n${context}\n\nQUESTION: ${question}` }
+        ]
+      })
+    });
+    if (!llmRes.ok) throw new Error(`LLM ${llmRes.status}: ${await llmRes.text()}`);
+    const data = await llmRes.json();
+    const answer = ((data.choices && data.choices[0] && data.choices[0].message.content) || '').trim();
+
+    res.json({
+      answer,
+      sources: hits.map((h, i) => ({ n: i + 1, title: h.title, score: Math.round((h.score || 0) * 1000) / 1000 })),
+      latency_ms: Date.now() - t0,
+      grounded: true
+    });
+  } catch (e) {
+    console.error('Chat error:', e);
+    res.status(500).json({ error: 'Something went wrong answering that.', detail: String((e && e.message) || e) });
+  }
+});
+
 if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5050;
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });

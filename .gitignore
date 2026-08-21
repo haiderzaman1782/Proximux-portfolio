@@ -8,6 +8,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
+/supabase
+
+
+
 node_modules
 dist
 dist-ssr
@@ -43,3 +48,4 @@ Thumbs.db
 # yarn.lock
 PROXIMUX-WIREFRAME-SPEC.md
 .claude/launch.json
+.env.example

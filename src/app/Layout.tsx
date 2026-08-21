@@ -8,6 +8,7 @@ import { Footer } from './components/Footer';
 import { ServiceModal } from './components/ServiceModal';
 import { ContactFormModal } from './components/ContactFormModal';
 import { BookingModal } from './components/BookingModal';
+import { ChatWidget } from './components/ChatWidget';
 import { UIContext } from './ui-context';
 import type { Service } from './data';
 
@@ -80,7 +81,7 @@ export function Layout() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="fixed bottom-[40px] right-[40px] z-50 w-12 h-12 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center shadow-lg cursor-pointer border-0 touch-manipulation overflow-hidden"
+              className="fixed bottom-[40px] left-[40px] z-50 w-12 h-12 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center shadow-lg cursor-pointer border-0 touch-manipulation overflow-hidden"
               title="Scroll to top"
             >
               <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
@@ -98,6 +99,8 @@ export function Layout() {
         />
         <ContactFormModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
         <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+
+        <ChatWidget />
       </div>
     </UIContext.Provider>
   );

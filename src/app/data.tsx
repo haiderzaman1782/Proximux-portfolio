@@ -113,7 +113,7 @@ export const proofCases = [
     headline: "Ask ‹400› pages a question. Get a cited answer in ‹XXms›.",
     metrics: ["‹XXms› p95 retrieval", "‹95%+› accuracy on ‹N›-question eval", "Citations on 100% of answers", "‹0› hallucinations in eval"],
     artifacts: [
-      { label: "Try the live demo", icon: <Zap size={14} />, href: DEMO_LINKS.ragDemo },
+      { label: "Try the live demo", icon: <Zap size={14} />, action: "chat" as const },
       { label: "4-min teardown", icon: <Play size={14} />, href: DEMO_LINKS.ragTeardown },
       { label: "Architecture", icon: <GitBranch size={14} />, href: DEMO_LINKS.ragArchitecture }
     ]

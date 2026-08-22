@@ -1,14 +1,15 @@
 import { motion } from 'motion/react';
 
-export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, artifacts, index, onCta }: {
+export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, artifacts, index, onCta, onChat }: {
   mediaLabel: string;
   mediaType: 'demo' | 'audio' | 'video';
   diagram: React.ReactNode;
   headline: string;
   metrics: string[];
-  artifacts: { label: string; icon: React.ReactNode; href?: string }[];
+  artifacts: { label: string; icon: React.ReactNode; href?: string; action?: 'chat' }[];
   index: number;
   onCta: () => void;
+  onChat?: () => void;
 }) {
   return (
     <motion.div
@@ -46,6 +47,15 @@ export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, a
         <div className="flex flex-wrap gap-2 mt-auto pt-5 border-t border-[var(--saas-border)]">
           {artifacts.map((a) => {
             const cls = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--saas-border)] hover:border-[var(--saas-lime)] hover:text-[var(--saas-lime)] text-[var(--saas-text)] text-[11px] sm:text-xs font-medium transition-colors";
+            // action 'chat' → open the Ask Proximux chatbot (this IS the live demo).
+            if (a.action === 'chat' && onChat) {
+              return (
+                <button key={a.label} onClick={onChat} className={cls}>
+                  {a.icon}
+                  {a.label}
+                </button>
+              );
+            }
             // A real link → open it (new tab for http, same tab for tel:/mailto:).
             // No link set yet → fall back to the booking form.
             if (a.href) {

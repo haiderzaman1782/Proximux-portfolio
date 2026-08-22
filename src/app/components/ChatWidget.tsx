@@ -21,8 +21,7 @@ const SUGGESTIONS = [
   "Typical timeline for a voice agent?"
 ];
 
-export function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -65,7 +64,7 @@ export function ChatWidget() {
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => onOpenChange(!open)}
         className="fixed bottom-5 right-5 z-[90] w-14 h-14 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center shadow-xl shadow-black/40 touch-manipulation"
         aria-label="Ask Proximux"
       >
@@ -90,7 +89,7 @@ export function ChatWidget() {
                 <div className="font-syne font-bold text-sm text-[var(--saas-text)]">Ask Proximux</div>
                 <div className="text-[11px] text-[var(--saas-muted)]">RAG over our own docs — cited answers</div>
               </div>
-              <button onClick={() => setOpen(false)} className="ml-auto text-[var(--saas-muted)] hover:text-white transition-colors">
+              <button onClick={() => onOpenChange(false)} className="ml-auto text-[var(--saas-muted)] hover:text-white transition-colors">
                 <X size={18} />
               </button>
             </div>

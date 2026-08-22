@@ -5,6 +5,7 @@ export type UI = {
   openBooking: () => void;
   openContact: () => void;
   openService: (service: Service) => void;
+  openChat: () => void;
 };
 
 export const UIContext = createContext<UI | null>(null);

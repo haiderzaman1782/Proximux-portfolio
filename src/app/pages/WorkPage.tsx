@@ -5,7 +5,7 @@ import { CtaBand } from '../components/CtaBand';
 import { proofCases } from '../data';
 
 export function WorkPage() {
-  const { openBooking } = useUI();
+  const { openBooking, openChat } = useUI();
 
   return (
     <>
@@ -19,7 +19,7 @@ export function WorkPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {proofCases.map((c, i) => (
-              <ProofCard key={c.mediaLabel} index={i} onCta={openBooking} {...c} />
+              <ProofCard key={c.mediaLabel} index={i} onCta={openBooking} onChat={openChat} {...c} />
             ))}
           </div>
 

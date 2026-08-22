@@ -19,6 +19,7 @@ export function Layout() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showLoader, setShowLoader] = useState(true);
+  const [chatOpen, setChatOpen] = useState(false);
   const { pathname } = useLocation();
 
   // Jump to top on every route change (instant, not smooth).
@@ -51,7 +52,8 @@ export function Layout() {
   const ui = useMemo(() => ({
     openBooking: () => setBookingOpen(true),
     openContact: () => setContactOpen(true),
-    openService: (s: Service) => setSelectedService(s)
+    openService: (s: Service) => setSelectedService(s),
+    openChat: () => setChatOpen(true)
   }), []);
 
   return (
@@ -100,7 +102,7 @@ export function Layout() {
         <ContactFormModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
         <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
 
-        <ChatWidget />
+        <ChatWidget open={chatOpen} onOpenChange={setChatOpen} />
       </div>
     </UIContext.Provider>
   );

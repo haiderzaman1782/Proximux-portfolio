@@ -75,7 +75,7 @@ Rules:
 - Answer ONLY using the numbered CONTEXT below. Do not use outside knowledge.
 - Do not include citation markers, reference numbers, or brackets like [1] in your answer.
 - If the CONTEXT does not contain the answer, say you don't have that detail and suggest booking a discovery call at proximux.online. Never invent facts, prices, or timelines.
-- Speak as Proximux ("we"). Be concise and friendly — 2 to 4 sentences.`;
+- Speak as Proximux ("we"). Be concise and friendly, 2 to 4 sentences, and never use em-dashes; use commas or periods instead.`;
 
 const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to get a precise answer is to book a 30-minute discovery call at proximux.online — you'll talk directly to an engineer.";
 

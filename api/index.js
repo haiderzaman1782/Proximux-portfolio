@@ -88,6 +88,15 @@ app.post('/api/chat', async (req, res) => {
 
   const t0 = Date.now();
   try {
+    // Full-text search AND's every word, which is far too strict for a natural
+    // question ("what is your process and typical timeline" matches nothing).
+    // OR the words instead so any relevant chunk surfaces, ranked by relevance
+    // (websearch_to_tsquery treats the word "or" as the OR operator; English
+    // stopwords are dropped automatically).
+    const searchQuery =
+      question.replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().split(/\s+/).filter(Boolean).join(' or ') ||
+      question;
+
     // 1. Retrieve relevant chunks (Postgres full-text search via Supabase RPC).
     const rpc = await fetch(`${SUPABASE_URL}/rest/v1/rpc/match_chunks`, {
       method: 'POST',
@@ -96,7 +105,7 @@ app.post('/api/chat', async (req, res) => {
         Authorization: `Bearer ${SUPABASE_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ query_text: question, match_count: 5 })
+      body: JSON.stringify({ query_text: searchQuery, match_count: 5 })
     });
     if (!rpc.ok) throw new Error(`Supabase ${rpc.status}: ${await rpc.text()}`);
     const hits = await rpc.json();

@@ -126,18 +126,6 @@ export function ChatWidget() {
                     }
                   >
                     <div className="whitespace-pre-wrap">{m.text}</div>
-                    {m.sources && m.sources.length > 0 && (
-                      <div className="mt-2.5 pt-2.5 border-t border-[var(--saas-border)] flex flex-wrap gap-1.5">
-                        {m.sources.map((s) => (
-                          <span key={s.n} className="text-[10px] text-[var(--saas-muted)] border border-[var(--saas-border)] rounded-full px-2 py-0.5">
-                            [{s.n}] {s.title}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    {m.role === 'assistant' && !m.error && m.latency != null && (
-                      <div className="mt-1.5 text-[10px] text-[#6b6b60] font-mono">answered in {m.latency}ms</div>
-                    )}
                   </div>
                 </div>
               ))}

@@ -110,20 +110,30 @@ export const proofCases = [
     mediaType: "demo" as const,
     mediaLabel: "Live RAG demo",
     diagram: <RagDiagram />,
-    headline: "Ask ‹400› pages a question. Get a cited answer in ‹XXms›.",
-    metrics: ["‹XXms› p95 retrieval", "‹95%+› accuracy on ‹N›-question eval", "Citations on 100% of answers", "‹0› hallucinations in eval"],
+    headline: "Ask it anything about Proximux. It answers from our own content, live.",
+    metrics: [
+      "Grounded in Proximux's real content, not a canned script",
+      "Full-text retrieval over our own docs",
+      "The same RAG approach we build for clients",
+      "Running now, open the chat at the bottom right"
+    ],
     artifacts: [
-      { label: "Try the live demo", icon: <Zap size={14} />, action: "chat" as const },
-      { label: "4-min teardown", icon: <Play size={14} />, href: DEMO_LINKS.ragTeardown },
-      { label: "Architecture", icon: <GitBranch size={14} />, href: DEMO_LINKS.ragArchitecture }
+      { label: "Try the live demo", icon: <Zap size={14} />, action: "chat" as const }
     ]
   },
   {
+    // Coming soon: set comingSoon to false and fill DEMO_LINKS.voice* once the demo line is live.
+    comingSoon: true,
     mediaType: "audio" as const,
-    mediaLabel: "Real call recording",
+    mediaLabel: "Voice agent demo",
     diagram: <VoiceDiagram />,
-    headline: "Hear it book a real appointment — and sync it to the CRM live.",
-    metrics: ["‹XXXms› voice-to-voice", "‹X/X› calls booked", "CRM write in ‹Xs›", "24/7 availability"],
+    headline: "A voice agent that answers, qualifies, and books over a real phone call.",
+    metrics: [
+      "Natural turn-taking with barge-in, not a phone menu",
+      "Books appointments and writes to your CRM live",
+      "Hands off to a human with full call context",
+      "Runs 24/7 on your own number"
+    ],
     artifacts: [
       { label: "Play the call", icon: <Play size={14} />, href: DEMO_LINKS.voicePlay },
       { label: "Call the demo line", icon: <PhoneCall size={14} />, href: DEMO_LINKS.voiceCallLine },
@@ -131,11 +141,18 @@ export const proofCases = [
     ]
   },
   {
+    // Coming soon: set comingSoon to false and fill DEMO_LINKS.mobile* once the walkthrough is ready.
+    comingSoon: true,
     mediaType: "video" as const,
-    mediaLabel: "App UI walkthrough",
+    mediaLabel: "Mobile app demo",
     diagram: <MobileDiagram />,
-    headline: "60fps UI, sub-second loads — iOS and Android from one codebase.",
-    metrics: ["‹XXXms› p95 API load", "‹Xs› cold start", "Offline-capable", "‹N› screens shipped"],
+    headline: "One React Native codebase, shipped to the App Store and Play Store.",
+    metrics: [
+      "iOS and Android from a single codebase",
+      "Offline-first with background sync",
+      "Push, auth, and in-app payments built in",
+      "Typed end to end with the backend"
+    ],
     artifacts: [
       { label: "Open the flow", icon: <Zap size={14} />, href: DEMO_LINKS.mobileFlow },
       { label: "Walkthrough", icon: <Play size={14} />, href: DEMO_LINKS.mobileWalkthrough },

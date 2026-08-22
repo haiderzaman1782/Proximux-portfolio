@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, artifacts, index, onCta, onChat }: {
+export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, artifacts, index, onCta, onChat, comingSoon }: {
   mediaLabel: string;
   mediaType: 'demo' | 'audio' | 'video';
   diagram: React.ReactNode;
@@ -10,6 +10,7 @@ export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, a
   index: number;
   onCta: () => void;
   onChat?: () => void;
+  comingSoon?: boolean;
 }) {
   return (
     <motion.div
@@ -17,14 +18,14 @@ export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, a
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -5 }}
+      whileHover={comingSoon ? undefined : { y: -5 }}
       className="bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-2xl flex flex-col h-full overflow-hidden hover:border-[var(--saas-lime)]/50 transition-colors"
     >
       {/* Architecture diagram — replace with a real demo recording when available */}
       <div className="relative shrink-0 bg-[var(--saas-inner-bg)] border-b border-[var(--saas-border)] px-5 pt-9 pb-5 overflow-hidden">
         <span className="absolute top-3 left-4 z-10 text-[10px] uppercase tracking-widest text-[var(--saas-muted)]">{mediaLabel}</span>
         <span className="absolute top-3 right-3 z-10 text-[9px] uppercase tracking-widest text-[#6b6b60] border border-[var(--saas-border)] rounded-full px-2 py-0.5">
-          {mediaType === 'audio' ? 'Audio' : mediaType === 'demo' ? 'Live' : 'Video'}
+          {comingSoon ? 'Coming soon' : mediaType === 'audio' ? 'Audio' : mediaType === 'demo' ? 'Live' : 'Video'}
         </span>
         {/* width-driven SVG: fills the card width, height derives from the viewBox — cannot overflow */}
         <div className="w-full [&>svg]:block [&>svg]:w-full [&>svg]:h-auto">{diagram}</div>
@@ -47,6 +48,20 @@ export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, a
         <div className="flex flex-wrap gap-2 mt-auto pt-5 border-t border-[var(--saas-border)]">
           {artifacts.map((a) => {
             const cls = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--saas-border)] hover:border-[var(--saas-lime)] hover:text-[var(--saas-lime)] text-[var(--saas-text)] text-[11px] sm:text-xs font-medium transition-colors";
+            // Coming soon → faded, non-interactive buttons (the demo isn't live yet).
+            if (comingSoon) {
+              return (
+                <button
+                  key={a.label}
+                  disabled
+                  aria-disabled="true"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--saas-border)] text-[var(--saas-text)] text-[11px] sm:text-xs font-medium opacity-40 cursor-not-allowed"
+                >
+                  {a.icon}
+                  {a.label}
+                </button>
+              );
+            }
             // action 'chat' → open the Ask Proximux chatbot (this IS the live demo).
             if (a.action === 'chat' && onChat) {
               return (

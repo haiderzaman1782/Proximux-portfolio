@@ -87,7 +87,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
               </span>
               <div className="leading-tight">
                 <div className="font-syne font-bold text-sm text-[var(--saas-text)]">Ask Proximux</div>
-                <div className="text-[11px] text-[var(--saas-muted)]">RAG over our own docs — cited answers</div>
+                <div className="text-[11px] text-[var(--saas-muted)]">RAG over our own docs, grounded answers</div>
               </div>
               <button onClick={() => onOpenChange(false)} className="ml-auto text-[var(--saas-muted)] hover:text-white transition-colors">
                 <X size={18} />
@@ -99,7 +99,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
               {messages.length === 0 && (
                 <div className="pt-2">
                   <p className="text-sm text-[var(--saas-muted)] mb-4 leading-relaxed">
-                    Hi — ask me anything about Proximux. Every answer is retrieved from our real content and cited.
+                    Hi, ask me anything about Proximux. Every answer is retrieved from our real content.
                   </p>
                   <div className="flex flex-col gap-2">
                     {SUGGESTIONS.map((s) => (

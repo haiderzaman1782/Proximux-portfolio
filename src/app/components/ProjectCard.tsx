@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { Project } from '../data';
 
-export function ProjectCard({ project, index }: { project: Project; index: number }) {
+export function ProjectCard({ project, index, className = '' }: { project: Project; index: number; className?: string }) {
   const { title, category, description, tags, link, linkLabel, demo } = project;
   return (
     <motion.div
@@ -11,7 +11,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: (index % 3) * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -5 }}
-      className="bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-2xl p-6 sm:p-8 flex flex-col h-full hover:border-[var(--saas-lime)]/50 transition-colors"
+      className={`bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-2xl p-6 sm:p-8 flex flex-col h-full hover:border-[var(--saas-lime)]/50 transition-colors ${className}`}
     >
       <div className="flex items-center justify-between gap-3 mb-4">
         <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[var(--saas-lime)] font-bold">{category}</span>

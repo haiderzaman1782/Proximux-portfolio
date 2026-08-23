@@ -9,13 +9,13 @@ export function HeroGlobe() {
         {/* sphere outline */}
         <circle cx="300" cy="300" r="290" stroke={line} />
 
-        {/* meridians (longitude) — vertical ellipses */}
+        {/* meridians (longitude) - vertical ellipses */}
         <ellipse cx="300" cy="300" rx="222" ry="290" stroke={faint} />
         <ellipse cx="300" cy="300" rx="140" ry="290" stroke={faint} />
         <ellipse cx="300" cy="300" rx="58" ry="290" stroke={faint} />
         <line x1="300" y1="10" x2="300" y2="590" stroke={faint} />
 
-        {/* parallels (latitude) — tilted horizontal ellipses */}
+        {/* parallels (latitude) - tilted horizontal ellipses */}
         <ellipse cx="300" cy="300" rx="290" ry="46" stroke={line} />
         <ellipse cx="300" cy="160" rx="253" ry="36" stroke={faint} />
         <ellipse cx="300" cy="440" rx="253" ry="36" stroke={faint} />

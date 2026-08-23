@@ -1,4 +1,4 @@
-// Architecture diagram — Enterprise RAG & Knowledge Engine pipeline.
+// Architecture diagram - Enterprise RAG & Knowledge Engine pipeline.
 // Schematic, dark + lime, scales to its container.
 export function RagDiagram() {
   return (

@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { Project } from '../data';
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { title, category, description, tags, link, linkLabel } = project;
+  const { title, category, description, tags, link, linkLabel, demo } = project;
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -35,12 +35,24 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         {description}
       </p>
 
-      <div className="flex flex-wrap gap-2 mt-auto">
-        {tags.map((t) => (
-          <span key={t} className="px-2.5 py-1 rounded-full border border-[var(--saas-lime)]/25 text-[var(--saas-muted)] text-[10px] sm:text-xs font-medium">
-            {t}
-          </span>
-        ))}
+      <div className="mt-auto">
+        {demo && (
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mb-4 px-3.5 py-1.5 rounded-full bg-[var(--saas-lime)] text-black text-xs font-semibold hover:opacity-90 transition-opacity"
+          >
+            <ExternalLink size={13} /> Live demo
+          </a>
+        )}
+        <div className="flex flex-wrap gap-2">
+          {tags.map((t) => (
+            <span key={t} className="px-2.5 py-1 rounded-full border border-[var(--saas-lime)]/25 text-[var(--saas-muted)] text-[10px] sm:text-xs font-medium">
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

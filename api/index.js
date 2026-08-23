@@ -63,7 +63,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // --- RAG chatbot: full-text retrieve from Supabase + answer with an OpenAI-compatible LLM ---
-// Works with Groq (api.groq.com, gsk_ keys) OR xAI Grok (api.x.ai, xai_ keys) — just set the env vars.
+// Works with Groq (api.groq.com, gsk_ keys) OR xAI Grok (api.x.ai, xai_ keys) - just set the env vars.
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const LLM_API_URL = process.env.LLM_API_URL || 'https://api.groq.com/openai/v1/chat/completions';
@@ -77,7 +77,45 @@ Rules:
 - If the CONTEXT does not contain the answer, say you don't have that detail and suggest booking a discovery call at proximux.online. Never invent facts, prices, or timelines.
 - Speak as Proximux ("we"). Be concise and friendly, 2 to 4 sentences, and never use em-dashes; use commas or periods instead.`;
 
-const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to get a precise answer is to book a 30-minute discovery call at proximux.online — you'll talk directly to an engineer.";
+const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to get a precise answer is to book a 30-minute discovery call at proximux.online, where you'll talk directly to an engineer.";
+
+// Greetings and small talk retrieve nothing from the corpus, so without this they
+// hit the "book a call" refusal. Answer them warmly and instantly, no search or LLM.
+function smallTalkReply(qRaw) {
+  const q = String(qRaw || '').toLowerCase().replace(/[^\p{L}\s']/gu, ' ').replace(/\s+/g, ' ').trim();
+  if (!q) return null;
+  const words = q.split(' ');
+  if (words.length > 5) return null; // longer messages are real questions, let RAG handle them
+
+  const greet = new Set(['hi', 'hii', 'hiii', 'hiya', 'hey', 'heyy', 'heyyy', 'hello', 'helloo', 'helo', 'hellow', 'yo', 'sup', 'wassup', 'howdy', 'greetings', 'hola', 'namaste', 'salam', 'salaam', 'assalam', 'assalamualaikum', 'aoa', 'gm', 'morning', 'evening']);
+  const thank = new Set(['thanks', 'thank', 'thankyou', 'thx', 'tysm', 'ty', 'cheers', 'appreciate', 'appreciated']);
+  const bye = new Set(['bye', 'goodbye', 'byee', 'byebye', 'cya', 'ciao', 'later', 'farewell']);
+  const hits = (set) => words.some((w) => set.has(w));
+
+  const isGreeting = hits(greet)
+    || /\bgood (morning|afternoon|evening|day|night)\b/.test(q)
+    || /\bhow (are|r) (you|u|ya)\b/.test(q)
+    || /\bhow'?s it going\b/.test(q)
+    || /\bhow (are|r) things\b/.test(q)
+    || /\bwhat'?s up\b/.test(q)
+    || /\bhow do you do\b/.test(q)
+    || /\bassalam/.test(q)
+    || /\bnice to meet\b/.test(q);
+
+  if (isGreeting) {
+    return "Hi! I'm the Proximux assistant. I can tell you about our services (RAG, AI voice agents, mobile, and web), our process, pricing, timelines, and the projects we've built. What would you like to know?";
+  }
+  if (hits(thank)) {
+    return "You're welcome! Anything else you'd like to know about Proximux, our services, or our work?";
+  }
+  if (hits(bye)) {
+    return "Thanks for stopping by. Whenever you're ready, you can book a discovery call at proximux.online. Take care!";
+  }
+  if (/\bwho (are|r) (you|u)\b/.test(q) || /\bwhat (are|r) (you|u)\b/.test(q) || /\bwhat can (you|u) do\b/.test(q) || /\bwhat can i ask\b/.test(q) || q === 'help') {
+    return "I'm the Proximux assistant, and I answer from our real content. Ask me about our services (RAG, AI voice agents, mobile, and web), our process and pricing, timelines, the projects we've built, or how we'd approach yours. What would you like to know?";
+  }
+  return null;
+}
 
 app.post('/api/chat', async (req, res) => {
   const question = String((req.body && req.body.question) || '').trim().slice(0, 500);
@@ -88,6 +126,12 @@ app.post('/api/chat', async (req, res) => {
   }
 
   const t0 = Date.now();
+
+  const smallTalk = smallTalkReply(question);
+  if (smallTalk) {
+    return res.json({ answer: smallTalk, sources: [], latency_ms: Date.now() - t0, grounded: true });
+  }
+
   try {
     // Full-text search AND's every word, which is far too strict for a natural
     // question ("what is your process and typical timeline" matches nothing).

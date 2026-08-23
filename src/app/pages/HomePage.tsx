@@ -37,7 +37,7 @@ export function HomePage() {
             className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(200,241,53,0.1)] border border-[rgba(200,241,53,0.2)] rounded-[20px] text-xs sm:text-sm"
           >
             <motion.span animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
-            <span className="text-[var(--saas-lime)]">2 build slots open — Q4 2026</span>
+            <span className="text-[var(--saas-lime)]">2 build slots open - Q4 2026</span>
           </motion.div>
 
           <motion.h1
@@ -55,7 +55,7 @@ export function HomePage() {
             transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--saas-muted)] max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed"
           >
-            Proximux is a two-founder engineering studio. We build custom RAG knowledge engines, autonomous AI voice agents, and full-stack web &amp; mobile applications — in Python/FastAPI and React Native. You work directly with the engineers writing the code. No account managers. No templates.
+            Proximux is a two-founder engineering studio. We build custom RAG knowledge engines, autonomous AI voice agents, and full-stack web &amp; mobile applications - in Python/FastAPI and React Native. You work directly with the engineers writing the code. No account managers. No templates.
           </motion.p>
 
           <motion.div
@@ -90,7 +90,7 @@ export function HomePage() {
         <div className="max-w-3xl mx-auto">
           <FadeInSection delay={0.1}>
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-[var(--saas-muted)] leading-relaxed text-center px-4">
-              Most agencies sell you <strong className="text-[var(--saas-text)] font-extrabold">hours and dashboards</strong>. We ship <strong className="text-[var(--saas-text)] font-extrabold">working systems</strong> — and prove them with a running demo before you commit. Fewer projects, senior engineers, and <strong className="text-[var(--saas-text)] font-black tracking-tighter">code you own outright</strong>.
+              Most agencies sell you <strong className="text-[var(--saas-text)] font-extrabold">hours and dashboards</strong>. We ship <strong className="text-[var(--saas-text)] font-extrabold">working systems</strong> - and prove them with a running demo before you commit. Fewer projects, senior engineers, and <strong className="text-[var(--saas-text)] font-black tracking-tighter">code you own outright</strong>.
             </p>
           </FadeInSection>
         </div>

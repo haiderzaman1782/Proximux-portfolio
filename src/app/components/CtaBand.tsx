@@ -5,7 +5,7 @@ import { useUI } from '../ui-context';
 export function CtaBand({
   eyebrow = "Start here",
   title = "Book a technical discovery call.",
-  subtitle = "30 minutes with an engineer. We'll tell you if we're the right team for the build — and if we're not, who is."
+  subtitle = "30 minutes with an engineer. We'll tell you if we're the right team for the build - and if we're not, who is."
 }: { eyebrow?: string, title?: string, subtitle?: string }) {
   const { openBooking, openContact } = useUI();
 

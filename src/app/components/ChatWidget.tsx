@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, ArrowUp, Sparkles } from 'lucide-react';
 
-// The chat API is your Vercel function at /api/chat (same origin — no config needed).
+// The chat API is your Vercel function at /api/chat (same origin - no config needed).
 const API_URL = (import.meta as any).env?.VITE_RAG_API_URL || '/api';
 
 type Source = { n: number; title: string; score: number };
@@ -38,6 +38,9 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
     setInput('');
     setMessages((m) => [...m, { role: 'user', text: q }]);
     setLoading(true);
+    const startedAt = Date.now();
+
+    let next: Msg;
     try {
       const res = await fetch(`${API_URL}/chat`, {
         method: 'POST',
@@ -49,12 +52,22 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
         throw new Error(detail.detail || detail.error || `Request failed (${res.status})`);
       }
       const data = await res.json();
-      setMessages((m) => [...m, { role: 'assistant', text: data.answer, sources: data.sources, latency: data.latency_ms }]);
+      next = { role: 'assistant', text: data.answer, sources: data.sources, latency: data.latency_ms };
     } catch (e: any) {
-      setMessages((m) => [...m, { role: 'assistant', text: e.message || 'Something went wrong. Try again in a moment.', error: true }]);
-    } finally {
-      setLoading(false);
+      next = { role: 'assistant', text: e.message || 'Something went wrong. Try again in a moment.', error: true };
     }
+
+    // Keep the typing dots visible for a natural beat so instant replies (like
+    // greetings) never flash in jarringly. Slow answers already exceed this and
+    // get no extra wait.
+    const elapsed = Date.now() - startedAt;
+    const minVisible = 1000 + Math.floor(Math.random() * 500); // ~1 to 1.5s
+    if (elapsed < minVisible) {
+      await new Promise((r) => setTimeout(r, minVisible - elapsed));
+    }
+
+    setMessages((m) => [...m, next]);
+    setLoading(false);
   }
 
   return (

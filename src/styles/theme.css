@@ -67,7 +67,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Site typeface — Figtree (free Google Font, closest match to Instagram Sans).
+  /* Site typeface - Figtree (free Google Font, closest match to Instagram Sans).
      Both tokens point to Figtree so headings and body share one family. */
   --font-syne: "Figtree", sans-serif;
   --font-dm-sans: "Figtree", sans-serif;

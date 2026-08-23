@@ -1,4 +1,4 @@
-// Architecture diagram — Autonomous AI Voice / Receptionist loop.
+// Architecture diagram - Autonomous AI Voice / Receptionist loop.
 // Caller → STT → LLM (+ tools) → TTS → back to caller; LLM writes to CRM/Calendar.
 export function VoiceDiagram() {
   return (

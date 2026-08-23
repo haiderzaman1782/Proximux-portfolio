@@ -31,7 +31,7 @@ export function Layout() {
     html.style.scrollBehavior = prev;
   }, [pathname]);
 
-  // Remove the intro loader after it fades — guarantees the page is never left
+  // Remove the intro loader after it fades - guarantees the page is never left
   // covered (e.g. a background-opened tab pauses the fade animation).
   useEffect(() => {
     const t = setTimeout(() => setShowLoader(false), 2200);

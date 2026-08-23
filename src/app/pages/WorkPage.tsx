@@ -13,8 +13,8 @@ export function WorkPage() {
         <div className="max-w-7xl mx-auto">
           <PageHeader
             eyebrow="Proof, not promises"
-            title="Don't take our word for it. Try the live demo."
-            intro="Our Ask Proximux assistant is live now, running on the same RAG stack we build for clients. Ask it anything and watch it answer from our own content. The voice and mobile demos are on the way."
+            title="Don't take our word for it. Try the live demos."
+            intro="Two of our systems are live right now: the Ask Proximux assistant, running on the same RAG stack we build for clients, and a BERT sentiment model we fine-tuned with LoRA. Try them both. The voice and mobile demos are on the way."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

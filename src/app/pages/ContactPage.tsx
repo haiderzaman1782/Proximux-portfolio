@@ -16,7 +16,7 @@ export function ContactPage() {
           <PageHeader
             eyebrow="Start here"
             title="Book a technical discovery call."
-            intro="30 minutes with an engineer. We'll tell you if we're the right team for the build — and if we're not, who is."
+            intro="30 minutes with an engineer. We'll tell you if we're the right team for the build - and if we're not, who is."
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">

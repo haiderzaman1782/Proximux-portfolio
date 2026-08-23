@@ -1,4 +1,4 @@
-// Architecture diagram — Cross-platform mobile app.
+// Architecture diagram - Cross-platform mobile app.
 // RN app (iOS + Android) ↔ typed FastAPI ↔ Postgres, with offline cache + push.
 export function MobileDiagram() {
   return (

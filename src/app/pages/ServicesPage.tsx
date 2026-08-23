@@ -15,7 +15,7 @@ export function ServicesPage() {
           <PageHeader
             eyebrow="What we engineer"
             title="Four disciplines. Built to hold up in production."
-            intro="No marketing, no generalist sprawl. We go deep on the systems below — and hand you code you own outright. Click any pillar for the full technical scope."
+            intro="No marketing, no generalist sprawl. We go deep on the systems below - and hand you code you own outright. Click any pillar for the full technical scope."
           />
 
           <motion.div

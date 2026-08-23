@@ -7,6 +7,7 @@ import { useUI } from '../ui-context';
 const NAV = [
   { name: "Services", to: "/services" },
   { name: "Work", to: "/work" },
+  { name: "Projects", to: "/projects" },
   { name: "About", to: "/about" },
   { name: "Contact", to: "/contact" }
 ];

@@ -208,3 +208,56 @@ export const faqs = [
   { q: "Do you do support after launch?", a: "Optional retainer for iteration, monitoring, and support. No lock-in — the repo and docs are yours to hand to any team." },
   { q: "What if we're not a fit?", a: "We'll say so on the first call and point you to someone better. We take on few projects so the ones we take get real senior attention." }
 ];
+
+// ── Projects: the founder's real portfolio (from resume). Honest capability proof. ──
+export type Project = {
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  featured?: boolean;   // shown in the Home preview (top 3)
+  link?: string;        // optional live/repo/store URL
+  linkLabel?: string;
+};
+
+export const projects: Project[] = [
+  {
+    title: "AI-Powered Ordering Platform",
+    category: "AI · Full-Stack",
+    description: "A production ordering system with a contextual AI chat assistant, round-robin rider assignment for deliveries, real-time notifications, Google OAuth, and full admin controls.",
+    tags: ["Python", "FastAPI", "AI Chat", "Real-time", "OAuth"],
+    featured: true
+  },
+  {
+    title: "IOS - AI Emoji & Sticker App",
+    category: "iOS · AI",
+    description: "A shipped iOS app that generates personalized emojis, stickers, and short videos through a job-based async pipeline over third-party image and video AI APIs, gated by a StoreKit 2 credit wallet.",
+    tags: ["Swift", "TCA", "Firebase", "StoreKit 2", "AI APIs"],
+    featured: true
+  },
+  {
+    title: "Multi-Tenant E-Commerce Platform",
+    category: "Web · SaaS",
+    description: "A Shopify-inspired platform letting multiple vendors run independent branded storefronts from a single codebase, with dynamic subdomain routing and the Shopify Storefront GraphQL API.",
+    tags: ["Next.js", "React Server Components", "GraphQL", "SaaS"],
+    featured: true
+  },
+  {
+    title: "Cross-Platform Email Sequencer",
+    category: "Cross-Platform",
+    description: "An email sequencing and automation tool sharing one set of responsive, reusable UI components across mobile and web, with OAuth 2.0 sign-in.",
+    tags: ["React Native", "React", "OAuth 2.0"]
+  },
+  {
+    title: "Book Recommendation System",
+    category: "Machine Learning",
+    description: "A personalized recommendation engine using collaborative and content-based filtering to tailor suggestions from a user's reading history and preferences.",
+    tags: ["Python", "Pandas", "Recommender"]
+  },
+  {
+    title: "Booking Dashboard",
+    category: "Frontend",
+    description: "A responsive dashboard to manage bookings, monitor user activity, and surface insights through charts and data tables.",
+    tags: ["React", "Tailwind", "Data Viz"]
+  }
+];

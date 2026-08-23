@@ -9,7 +9,8 @@ import { Stat } from '../components/Stat';
 import { CountUp, FadeInSection, HeadingReveal } from '../components/anim';
 import { CtaBand } from '../components/CtaBand';
 import { HeroGlobe } from '../components/HeroGlobe';
-import { services } from '../data';
+import { ProjectCard } from '../components/ProjectCard';
+import { services, projects } from '../data';
 
 export function HomePage() {
   const { openBooking } = useUI();
@@ -133,6 +134,30 @@ export function HomePage() {
               />
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Projects preview */}
+      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 border-t border-[var(--saas-border)] overflow-x-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 sm:mb-16">
+            <div>
+              <FadeInSection>
+                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-black rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                  What we've built
+                </div>
+              </FadeInSection>
+              <HeadingReveal text="Real projects, shipped." />
+            </div>
+            <Link to="/projects" className="text-[var(--saas-lime)] font-semibold text-sm flex items-center gap-1.5 hover:gap-2.5 transition-all shrink-0">
+              All projects <ArrowRight size={15} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {projects.filter((p) => p.featured).map((p, i) => (
+              <ProjectCard key={p.title} project={p} index={i} />
+            ))}
+          </div>
         </div>
       </section>
 

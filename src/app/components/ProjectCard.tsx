@@ -1,0 +1,47 @@
+import { motion } from 'motion/react';
+import { ArrowUpRight } from 'lucide-react';
+import type { Project } from '../data';
+
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { title, category, description, tags, link, linkLabel } = project;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: (index % 3) * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -5 }}
+      className="bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-2xl p-6 sm:p-8 flex flex-col h-full hover:border-[var(--saas-lime)]/50 transition-colors"
+    >
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[var(--saas-lime)] font-bold">{category}</span>
+        {link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={linkLabel || 'Open'}
+            className="text-[var(--saas-muted)] hover:text-[var(--saas-lime)] transition-colors"
+          >
+            <ArrowUpRight size={16} />
+          </a>
+        )}
+      </div>
+
+      <h3 className="font-syne text-lg sm:text-xl font-bold text-[var(--saas-text)] mb-3 leading-snug">
+        {title}
+      </h3>
+      <p className="text-sm sm:text-base text-[var(--saas-muted)] leading-relaxed mb-6">
+        {description}
+      </p>
+
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {tags.map((t) => (
+          <span key={t} className="px-2.5 py-1 rounded-full border border-[var(--saas-lime)]/25 text-[var(--saas-muted)] text-[10px] sm:text-xs font-medium">
+            {t}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}

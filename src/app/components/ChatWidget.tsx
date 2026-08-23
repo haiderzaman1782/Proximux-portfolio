@@ -34,6 +34,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
   async function send(question: string) {
     const q = question.trim();
     if (!q || loading) return;
+    const history = messages.filter((m) => !m.error).map((m) => ({ role: m.role, text: m.text }));
     setInput('');
     setMessages((m) => [...m, { role: 'user', text: q }]);
     setLoading(true);
@@ -41,7 +42,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
       const res = await fetch(`${API_URL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: q })
+        body: JSON.stringify({ question: q, history })
       });
       if (!res.ok) {
         const detail = await res.json().catch(() => ({}));

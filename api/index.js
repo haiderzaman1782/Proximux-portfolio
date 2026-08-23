@@ -81,6 +81,7 @@ const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to g
 
 app.post('/api/chat', async (req, res) => {
   const question = String((req.body && req.body.question) || '').trim().slice(0, 500);
+  const history = Array.isArray(req.body && req.body.history) ? req.body.history.slice(-6) : [];
   if (!question) return res.status(400).json({ error: 'Ask a question.' });
   if (!SUPABASE_URL || !SUPABASE_KEY || !LLM_API_KEY) {
     return res.status(500).json({ error: 'Chatbot is not configured (missing SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, or LLM_API_KEY).' });
@@ -93,8 +94,11 @@ app.post('/api/chat', async (req, res) => {
     // OR the words instead so any relevant chunk surfaces, ranked by relevance
     // (websearch_to_tsquery treats the word "or" as the OR operator; English
     // stopwords are dropped automatically).
+    // Include the previous user turn so follow-ups ("name all of them") still carry keywords.
+    const prevUser = [...history].reverse().find((m) => m && m.role === 'user');
+    const searchBasis = `${(prevUser && prevUser.text) || ''} ${question}`;
     const searchQuery =
-      question.replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().split(/\s+/).filter(Boolean).join(' or ') ||
+      searchBasis.replace(/[^\p{L}\p{N}\s]/gu, ' ').trim().split(/\s+/).filter(Boolean).join(' or ') ||
       question;
 
     // 1. Retrieve relevant chunks (Postgres full-text search via Supabase RPC).
@@ -105,7 +109,7 @@ app.post('/api/chat', async (req, res) => {
         Authorization: `Bearer ${SUPABASE_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ query_text: searchQuery, match_count: 5 })
+      body: JSON.stringify({ query_text: searchQuery, match_count: 8 })
     });
     if (!rpc.ok) throw new Error(`Supabase ${rpc.status}: ${await rpc.text()}`);
     const hits = await rpc.json();
@@ -125,6 +129,9 @@ app.post('/api/chat', async (req, res) => {
         max_tokens: 500,
         messages: [
           { role: 'system', content: CHAT_SYSTEM },
+          ...history
+            .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && m.text)
+            .map((m) => ({ role: m.role, content: String(m.text).slice(0, 1500) })),
           { role: 'user', content: `CONTEXT:\n${context}\n\nQUESTION: ${question}` }
         ]
       })

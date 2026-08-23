@@ -5,6 +5,7 @@ import { Mail, Phone } from 'lucide-react';
 const COMPANY = [
   { name: "Services", to: "/services" },
   { name: "Work", to: "/work" },
+  { name: "Projects", to: "/projects" },
   { name: "About", to: "/about" },
   { name: "Contact", to: "/contact" }
 ];

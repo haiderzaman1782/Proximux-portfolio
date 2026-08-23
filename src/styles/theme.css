@@ -1,42 +1,43 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* SaaS Landing Page Custom Colors */
-  --saas-dark-bg: #0a0a08;
-  --saas-lime: #c8f135;
-  --saas-card-bg: #141412;
-  --saas-border: #252520;
-  --saas-text: #e8e8e0;
-  --saas-muted: #9a9a8a;
-  --saas-hover-bg: #1a1a17;
-  --saas-input-bg: #111110;
-  --saas-inner-bg: #181815;
+  /* Aqua & slate — light theme. Accent is a slate-blue, so on-accent text is white. */
+  --saas-dark-bg: #eef6f8;
+  --saas-lime: #2b6ea3;
+  --saas-card-bg: #ffffff;
+  --saas-border: #d3e5ea;
+  --saas-text: #10222a;
+  --saas-muted: #5f7a83;
+  --saas-hover-bg: #e3f0f3;
+  --saas-input-bg: #f2f8f9;
+  --saas-inner-bg: #e3f0f3;
+  --saas-on-accent: #ffffff;
 
   /* Original theme variables */
   --font-size: 16px;
-  --background: #0a0a08;
-  --foreground: #e8e8e0;
-  --card: #141412;
-  --card-foreground: #e8e8e0;
-  --popover: #141412;
-  --popover-foreground: #e8e8e0;
-  --primary: #c8f135;
-  --primary-foreground: #000000;
-  --secondary: #1a1a17;
-  --secondary-foreground: #e8e8e0;
-  --muted: #111110;
-  --muted-foreground: #9a9a8a;
-  --accent: #252520;
-  --accent-foreground: #c8f135;
+  --background: #eef6f8;
+  --foreground: #10222a;
+  --card: #ffffff;
+  --card-foreground: #10222a;
+  --popover: #ffffff;
+  --popover-foreground: #10222a;
+  --primary: #2b6ea3;
+  --primary-foreground: #ffffff;
+  --secondary: #e3f0f3;
+  --secondary-foreground: #10222a;
+  --muted: #e3f0f3;
+  --muted-foreground: #5f7a83;
+  --accent: #dbeaef;
+  --accent-foreground: #2b6ea3;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: #252520;
-  --input: transparent;
-  --input-background: #111110;
-  --switch-background: #252520;
+  --border: #d3e5ea;
+  --input: #d3e5ea;
+  --input-background: #f2f8f9;
+  --switch-background: #d3e5ea;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #c8f135;
+  --ring: #2b6ea3;
   --radius: 0.75rem;
 }
 

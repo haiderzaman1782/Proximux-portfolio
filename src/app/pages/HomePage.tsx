@@ -24,7 +24,7 @@ export function HomePage() {
       <section className="relative min-h-[82vh] md:min-h-[88vh] py-16 sm:py-20 md:py-24 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="relative w-[340px] h-[340px] sm:w-[560px] sm:h-[560px] lg:w-[760px] lg:h-[760px]">
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(200,241,53,0.07)_0%,transparent_68%)]"></div>
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(43,110,163,0.07)_0%,transparent_68%)]"></div>
             <HeroGlobe />
           </div>
         </div>
@@ -34,7 +34,7 @@ export function HomePage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.05, duration: 0.5, ease: "backOut" }}
-            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(200,241,53,0.1)] border border-[rgba(200,241,53,0.2)] rounded-[20px] text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.2)] rounded-[20px] text-xs sm:text-sm"
           >
             <motion.span animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
             <span className="text-[var(--saas-lime)]">2 build slots open - Q4 2026</span>
@@ -44,7 +44,7 @@ export function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[#f5f5ef] mb-6 sm:mb-8 leading-[1.1]"
+            className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[var(--saas-text)] mb-6 sm:mb-8 leading-[1.1]"
           >
             Production AI systems and software, shipped by the engineers who build them.
           </motion.h1>
@@ -67,7 +67,7 @@ export function HomePage() {
             <motion.button
               whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
               onClick={openBooking}
-              className="w-full sm:w-auto px-7 py-3 bg-[var(--saas-lime)] text-black rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-transform min-h-[44px] touch-manipulation whitespace-nowrap"
+              className="w-full sm:w-auto px-7 py-3 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-transform min-h-[44px] touch-manipulation whitespace-nowrap"
             >
               Request a Technical Discovery Call
               <ArrowRight size={16} />
@@ -102,7 +102,7 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 sm:mb-16">
             <div>
               <FadeInSection>
-                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-black rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
                   What we engineer
                 </div>
               </FadeInSection>
@@ -143,7 +143,7 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 sm:mb-16">
             <div>
               <FadeInSection>
-                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-black rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
                   What we've built
                 </div>
               </FadeInSection>

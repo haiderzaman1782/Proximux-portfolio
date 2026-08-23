@@ -44,7 +44,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-full flex items-center justify-between">
         <Link to="/" className="flex items-center gap-1 touch-manipulation min-h-[44px]" style={{ fontFamily: 'var(--font-syne)' }}>
-          <span className="text-xl sm:text-2xl font-extrabold text-[#e8e8e0]">PROXIMUX</span>
+          <span className="text-xl sm:text-2xl font-extrabold text-[var(--saas-text)]">PROXIMUX</span>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--saas-lime)', display: 'inline-block' }}></span>
         </Link>
 
@@ -97,7 +97,7 @@ export function Navbar() {
               <hr className="border-[var(--saas-border)]" />
               <button
                 onClick={() => { openBooking(); setMobileOpen(false); }}
-                className="touch-manipulation min-h-[44px] w-full bg-[var(--saas-lime)] text-black rounded-[24px] font-medium text-lg py-2"
+                className="touch-manipulation min-h-[44px] w-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[24px] font-medium text-lg py-2"
               >
                 Book a Technical Call
               </button>

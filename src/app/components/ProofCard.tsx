@@ -24,7 +24,7 @@ export function ProofCard({ mediaLabel, mediaType, diagram, headline, metrics, a
       {/* Architecture diagram - replace with a real demo recording when available */}
       <div className="relative shrink-0 bg-[var(--saas-inner-bg)] border-b border-[var(--saas-border)] px-5 pt-9 pb-5 overflow-hidden">
         <span className="absolute top-3 left-4 z-10 text-[10px] uppercase tracking-widest text-[var(--saas-muted)]">{mediaLabel}</span>
-        <span className="absolute top-3 right-3 z-10 text-[9px] uppercase tracking-widest text-[#6b6b60] border border-[var(--saas-border)] rounded-full px-2 py-0.5">
+        <span className="absolute top-3 right-3 z-10 text-[9px] uppercase tracking-widest text-[var(--saas-muted)] border border-[var(--saas-border)] rounded-full px-2 py-0.5">
           {comingSoon ? 'Coming soon' : mediaType === 'audio' ? 'Audio' : mediaType === 'demo' ? 'Live' : 'Video'}
         </span>
         {/* width-driven SVG: fills the card width, height derives from the viewBox - cannot overflow */}

@@ -23,7 +23,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 text-center lg:text-left mb-16 lg:mb-24">
           <div className="flex flex-col items-center lg:items-start">
             <Link to="/" className="flex items-center gap-1 mb-6 text-xl sm:text-2xl font-extrabold font-syne touch-manipulation min-h-[44px]">
-              <span className="text-[#e8e8e0]">PROXIMUX</span>
+              <span className="text-[var(--saas-text)]">PROXIMUX</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--saas-lime)]"></span>
             </Link>
             <p className="text-sm sm:text-base text-[var(--saas-muted)] max-w-[260px]">

@@ -79,7 +79,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
         onClick={() => onOpenChange(!open)}
-        className="fixed bottom-5 right-5 z-[90] w-14 h-14 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center shadow-xl shadow-black/40 touch-manipulation"
+        className="fixed bottom-5 right-5 z-[90] w-14 h-14 rounded-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] flex items-center justify-center shadow-xl shadow-black/40 touch-manipulation"
         aria-label="Ask Proximux"
       >
         {open ? <X size={24} /> : <MessageSquare size={22} />}
@@ -96,14 +96,14 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
           >
             {/* Header */}
             <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[var(--saas-border)] shrink-0">
-              <span className="w-8 h-8 rounded-full bg-[rgba(200,241,53,0.12)] border border-[rgba(200,241,53,0.3)] flex items-center justify-center text-[var(--saas-lime)]">
+              <span className="w-8 h-8 rounded-full bg-[rgba(43,110,163,0.12)] border border-[rgba(43,110,163,0.3)] flex items-center justify-center text-[var(--saas-lime)]">
                 <Sparkles size={15} />
               </span>
               <div className="leading-tight">
                 <div className="font-syne font-bold text-sm text-[var(--saas-text)]">Ask Proximux</div>
                 <div className="text-[11px] text-[var(--saas-muted)]">RAG over our own docs, grounded answers</div>
               </div>
-              <button onClick={() => onOpenChange(false)} className="ml-auto text-[var(--saas-muted)] hover:text-white transition-colors">
+              <button onClick={() => onOpenChange(false)} className="ml-auto text-[var(--saas-muted)] hover:text-[var(--saas-text)] transition-colors">
                 <X size={18} />
               </button>
             </div>
@@ -134,8 +134,8 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
                   <div
                     className={
                       m.role === 'user'
-                        ? 'max-w-[85%] bg-[var(--saas-lime)] text-black rounded-2xl rounded-br-sm px-3.5 py-2.5 text-sm'
-                        : `max-w-[90%] rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-sm leading-relaxed ${m.error ? 'bg-[rgba(212,24,61,0.1)] border border-[rgba(212,24,61,0.3)] text-[#f5a3b3]' : 'bg-[var(--saas-inner-bg)] border border-[var(--saas-border)] text-[var(--saas-text)]'}`
+                        ? 'max-w-[85%] bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-2xl rounded-br-sm px-3.5 py-2.5 text-sm'
+                        : `max-w-[90%] rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-sm leading-relaxed ${m.error ? 'bg-[rgba(212,24,61,0.08)] border border-[rgba(212,24,61,0.25)] text-[#b3243d]' : 'bg-[var(--saas-inner-bg)] border border-[var(--saas-border)] text-[var(--saas-text)]'}`
                     }
                   >
                     <div className="whitespace-pre-wrap">{m.text}</div>
@@ -175,7 +175,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="w-10 h-10 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center disabled:opacity-40 transition-opacity shrink-0"
+                className="w-10 h-10 rounded-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] flex items-center justify-center disabled:opacity-40 transition-opacity shrink-0"
                 aria-label="Send"
               >
                 <ArrowUp size={18} />

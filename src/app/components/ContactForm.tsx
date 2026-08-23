@@ -65,9 +65,9 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-base focus:border-[var(--saas-lime)] outline-none transition-colors resize-none" />
       </div>
       <button disabled={status === 'submitting'}
-        className="w-full py-4 bg-[var(--saas-lime)] text-black rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 mt-2">
+        className="w-full py-4 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 mt-2">
         {status === 'submitting' ? (
-          <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+          <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></div>
         ) : (
           <>Send Brief <ArrowRight size={18} /></>
         )}

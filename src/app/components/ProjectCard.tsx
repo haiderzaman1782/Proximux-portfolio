@@ -41,7 +41,7 @@ export function ProjectCard({ project, index, className = '' }: { project: Proje
             href={demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mb-4 px-3.5 py-1.5 rounded-full bg-[var(--saas-lime)] text-black text-xs font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-1.5 mb-4 px-3.5 py-1.5 rounded-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] text-xs font-semibold hover:opacity-90 transition-opacity"
           >
             <ExternalLink size={13} /> Live demo
           </a>

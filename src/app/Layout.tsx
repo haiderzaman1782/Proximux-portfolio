@@ -63,7 +63,7 @@ export function Layout() {
 
         <motion.div
           className="fixed inset-0 z-0 pointer-events-none"
-          style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(180,255,0,0.04), transparent 60%)` }}
+          style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(43,110,163,0.04), transparent 60%)` }}
         />
 
         <Navbar />
@@ -83,7 +83,7 @@ export function Layout() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="fixed bottom-[40px] left-[40px] z-50 w-12 h-12 rounded-full bg-[var(--saas-lime)] text-black flex items-center justify-center shadow-lg cursor-pointer border-0 touch-manipulation overflow-hidden"
+              className="fixed bottom-[40px] left-[40px] z-50 w-12 h-12 rounded-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] flex items-center justify-center shadow-lg cursor-pointer border-0 touch-manipulation overflow-hidden"
               title="Scroll to top"
             >
               <motion.div animate={{ y: [0, -4, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>

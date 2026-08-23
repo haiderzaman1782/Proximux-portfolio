@@ -19,10 +19,10 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     (async () => {
       const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal('ui', {
-        theme: 'dark',
+        theme: 'light',
         hideEventTypeDetails: false,
         layout: 'month_view',
-        cssVarsPerTheme: { dark: { 'cal-brand': '#c8f135' } }
+        cssVarsPerTheme: { light: { 'cal-brand': '#2b6ea3' } }
       });
     })();
   }, []);
@@ -36,7 +36,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/95 backdrop-blur-md"
+            className="absolute inset-0 bg-black/50 backdrop-blur-md"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -50,7 +50,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
                 <CalendarDays size={18} className="text-[var(--saas-lime)]" />
                 Book a discovery call
               </div>
-              <button onClick={onClose} className="text-[var(--saas-muted)] hover:text-white transition-colors">
+              <button onClick={onClose} className="text-[var(--saas-muted)] hover:text-[var(--saas-text)] transition-colors">
                 <X size={22} />
               </button>
             </div>
@@ -60,7 +60,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
                 namespace={CAL_NAMESPACE}
                 calLink={CAL_LINK}
                 style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-                config={{ layout: 'month_view', theme: 'dark' }}
+                config={{ layout: 'month_view', theme: 'light' }}
               />
             </div>
 

@@ -17,7 +17,7 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+            className="absolute inset-0 bg-black/50 backdrop-blur-md"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -26,13 +26,13 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative z-[101] w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] p-6 sm:p-10 custom-scrollbar"
           >
-            <button onClick={onClose} className="absolute top-6 right-6 text-[var(--saas-muted)] hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+            <button onClick={onClose} className="absolute top-6 right-6 text-[var(--saas-muted)] hover:text-[var(--saas-text)] transition-colors p-2 hover:bg-black/5 rounded-full">
               <X size={24} />
             </button>
 
             <div className="flex flex-col gap-6 sm:gap-8">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center bg-[rgba(200,241,53,0.1)] border border-[rgba(200,241,53,0.2)] rounded-2xl text-[var(--saas-lime)]">
+                <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.2)] rounded-2xl text-[var(--saas-lime)]">
                   {service.icon}
                 </div>
                 <div className="flex-1">
@@ -69,7 +69,7 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
                           transition={{ delay: 0.1 + i * 0.05 }}
                           className="flex items-start gap-3 text-[var(--saas-text)]"
                         >
-                          <div className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0 rounded-full bg-[rgba(200,241,53,0.1)] flex items-center justify-center text-[var(--saas-lime)]">
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0 rounded-full bg-[rgba(43,110,163,0.1)] flex items-center justify-center text-[var(--saas-lime)]">
                             <Plus size={10} />
                           </div>
                           <span className="text-sm sm:text-base font-medium">{feature}</span>
@@ -97,7 +97,7 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
                       </p>
                       <button
                         onClick={onBook}
-                        className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[var(--saas-lime)] text-black rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-[var(--saas-lime)]/10 flex items-center justify-center gap-2 text-sm sm:text-base">
+                        className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-[var(--saas-lime)]/10 flex items-center justify-center gap-2 text-sm sm:text-base">
                         Book a technical call
                         <ArrowRight size={16} />
                       </button>

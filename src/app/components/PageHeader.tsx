@@ -4,7 +4,7 @@ export function PageHeader({ eyebrow, title, intro }: { eyebrow: string, title: 
   return (
     <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
       <FadeInSection>
-        <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-black rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+        <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
           {eyebrow}
         </div>
       </FadeInSection>

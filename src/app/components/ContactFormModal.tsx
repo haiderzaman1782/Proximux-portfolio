@@ -16,7 +16,7 @@ export function ContactFormModal({ isOpen, onClose }: { isOpen: boolean, onClose
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/95 backdrop-blur-md"
+            className="absolute inset-0 bg-black/50 backdrop-blur-md"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -24,7 +24,7 @@ export function ContactFormModal({ isOpen, onClose }: { isOpen: boolean, onClose
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
             className="relative z-[111] w-full max-w-lg bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-3xl shadow-2xl overflow-hidden"
           >
-            <button onClick={onClose} className="absolute top-6 right-6 text-[var(--saas-muted)] hover:text-white transition-colors z-10">
+            <button onClick={onClose} className="absolute top-6 right-6 text-[var(--saas-muted)] hover:text-[var(--saas-text)] transition-colors z-10">
               <X size={24} />
             </button>
             <div className="p-8 sm:p-10">

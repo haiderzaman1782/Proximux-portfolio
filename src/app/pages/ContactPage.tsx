@@ -33,7 +33,7 @@ export function ContactPage() {
                 <h3 className="text-[10px] sm:text-xs uppercase tracking-widest text-[var(--saas-lime)] font-bold mb-4">Prefer to book directly?</h3>
                 <button
                   onClick={openBooking}
-                  className="w-full mb-6 px-5 py-3.5 bg-[var(--saas-lime)] text-black rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95"
+                  className="w-full mb-6 px-5 py-3.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-95"
                 >
                   <CalendarDays size={16} />
                   Book a call
@@ -65,7 +65,7 @@ export function ContactPage() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <FadeInSection>
-              <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-black rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+              <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
                 FAQ
               </div>
             </FadeInSection>

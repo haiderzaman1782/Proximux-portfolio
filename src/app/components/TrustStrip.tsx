@@ -6,7 +6,7 @@ export function TrustStrip({ items = DEFAULT_STACK }: { items?: string[] }) {
   return (
     <section className="py-10 sm:py-12 border-y border-[var(--saas-border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#6b6b60] text-center mb-8 px-2">
+        <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[var(--saas-muted)] text-center mb-8 px-2">
           Built with
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10 max-w-3xl mx-auto">

@@ -4,7 +4,7 @@ import { motion, useInView } from 'motion/react';
 export const PageLoader = () => {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-[var(--saas-dark-bg)] flex items-center justify-center"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.8, delay: 1.2, ease: "easeInOut" }}

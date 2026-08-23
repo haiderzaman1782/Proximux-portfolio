@@ -52,17 +52,17 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
       <div>
         <label className="block text-xs font-bold uppercase tracking-widest text-[var(--saas-lime)] mb-2">Full Name</label>
         <input required name="name" type="text" placeholder="Jane Doe"
-          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-sm focus:border-[var(--saas-lime)] outline-none transition-colors" />
+          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-base focus:border-[var(--saas-lime)] outline-none transition-colors" />
       </div>
       <div>
         <label className="block text-xs font-bold uppercase tracking-widest text-[var(--saas-lime)] mb-2">Work Email</label>
         <input required name="email" type="email" placeholder="jane@company.com"
-          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-sm focus:border-[var(--saas-lime)] outline-none transition-colors" />
+          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-base focus:border-[var(--saas-lime)] outline-none transition-colors" />
       </div>
       <div>
         <label className="block text-xs font-bold uppercase tracking-widest text-[var(--saas-lime)] mb-2">What are you building?</label>
         <textarea required name="message" rows={4} placeholder="e.g. A RAG assistant over 5k internal docs, or an AI receptionist for inbound calls..."
-          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-sm focus:border-[var(--saas-lime)] outline-none transition-colors resize-none" />
+          className="w-full bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-xl px-4 py-3 text-base focus:border-[var(--saas-lime)] outline-none transition-colors resize-none" />
       </div>
       <button disabled={status === 'submitting'}
         className="w-full py-4 bg-[var(--saas-lime)] text-black rounded-xl font-bold transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 mt-2">

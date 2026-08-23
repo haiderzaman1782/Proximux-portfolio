@@ -170,7 +170,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about Proximux…"
-                className="flex-1 bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-full px-4 py-2.5 text-sm text-[var(--saas-text)] outline-none focus:border-[var(--saas-lime)] transition-colors"
+                className="flex-1 bg-[var(--saas-input-bg)] border border-[var(--saas-border)] rounded-full px-4 py-2.5 text-base text-[var(--saas-text)] outline-none focus:border-[var(--saas-lime)] transition-colors"
               />
               <button
                 type="submit"

@@ -37,7 +37,7 @@ export function Navbar() {
         zIndex: 50,
         height: '64px',
         borderBottom: `1px solid var(--saas-border)`,
-        backgroundColor: scrolled ? 'rgba(10, 10, 8, 0.8)' : 'transparent',
+        backgroundColor: scrolled ? 'var(--saas-nav-scrolled)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         transition: 'all 200ms ease'
       }}

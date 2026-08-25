@@ -96,7 +96,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
           >
             {/* Header */}
             <div className="flex items-center gap-2.5 px-5 py-4 border-b border-[var(--saas-border)] shrink-0">
-              <span className="w-8 h-8 rounded-full bg-[rgba(43,110,163,0.12)] border border-[rgba(43,110,163,0.3)] flex items-center justify-center text-[var(--saas-lime)]">
+              <span className="w-8 h-8 rounded-full bg-[rgba(79,114,86,0.12)] border border-[rgba(79,114,86,0.3)] flex items-center justify-center text-[var(--saas-lime)]">
                 <Sparkles size={15} />
               </span>
               <div className="leading-tight">

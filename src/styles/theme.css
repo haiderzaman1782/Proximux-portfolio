@@ -1,44 +1,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Aqua & slate — light theme. Accent is a slate-blue, so on-accent text is white. */
-  --saas-dark-bg: #eef6f8;
-  --saas-lime: #2b6ea3;
-  --saas-card-bg: #ffffff;
-  --saas-border: #d3e5ea;
-  --saas-text: #10222a;
-  --saas-muted: #5f7a83;
-  --saas-hover-bg: #e3f0f3;
-  --saas-input-bg: #f2f8f9;
-  --saas-inner-bg: #e3f0f3;
+  /* Soft sage — low-eye-strain light theme. Off-white cards, muted green accent, white on-accent. */
+  --saas-dark-bg: #eff3ec;
+  --saas-lime: #4f7256;
+  --saas-card-bg: #f9fcf7;
+  --saas-border: #d9e2d2;
+  --saas-text: #2c342c;
+  --saas-muted: #697566;
+  --saas-hover-bg: #e7eee2;
+  --saas-input-bg: #f3f7f1;
+  --saas-inner-bg: #e7eee2;
   --saas-on-accent: #ffffff;
-  --saas-nav-scrolled: rgba(238, 246, 248, 0.8);
+  --saas-nav-scrolled: rgba(239, 243, 236, 0.8);
 
   /* Original theme variables */
   --font-size: 16px;
-  --background: #eef6f8;
-  --foreground: #10222a;
-  --card: #ffffff;
-  --card-foreground: #10222a;
-  --popover: #ffffff;
-  --popover-foreground: #10222a;
-  --primary: #2b6ea3;
+  --background: #eff3ec;
+  --foreground: #2c342c;
+  --card: #f9fcf7;
+  --card-foreground: #2c342c;
+  --popover: #f9fcf7;
+  --popover-foreground: #2c342c;
+  --primary: #4f7256;
   --primary-foreground: #ffffff;
-  --secondary: #e3f0f3;
-  --secondary-foreground: #10222a;
-  --muted: #e3f0f3;
-  --muted-foreground: #5f7a83;
-  --accent: #dbeaef;
-  --accent-foreground: #2b6ea3;
+  --secondary: #e7eee2;
+  --secondary-foreground: #2c342c;
+  --muted: #e7eee2;
+  --muted-foreground: #697566;
+  --accent: #dde8d6;
+  --accent-foreground: #4f7256;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: #d3e5ea;
-  --input: #d3e5ea;
-  --input-background: #f2f8f9;
-  --switch-background: #d3e5ea;
+  --border: #d9e2d2;
+  --input: #d9e2d2;
+  --input-background: #f3f7f1;
+  --switch-background: #d9e2d2;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #2b6ea3;
+  --ring: #4f7256;
   --radius: 0.75rem;
 }
 

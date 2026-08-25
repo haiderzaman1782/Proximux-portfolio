@@ -12,7 +12,7 @@ export function CtaBand({
   return (
     <section className="relative py-24 sm:py-32 lg:py-40 px-4 sm:px-8 overflow-hidden border-t border-[var(--saas-border)]">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[300px] h-[150px] sm:w-[600px] sm:h-[300px] lg:w-[800px] lg:h-[400px] rounded-[50%] bg-[radial-gradient(ellipse,rgba(43,110,163,0.08)_0%,transparent_70%)]"></div>
+        <div className="w-[300px] h-[150px] sm:w-[600px] sm:h-[300px] lg:w-[800px] lg:h-[400px] rounded-[50%] bg-[radial-gradient(ellipse,rgba(79,114,86,0.08)_0%,transparent_70%)]"></div>
       </div>
 
       <motion.div

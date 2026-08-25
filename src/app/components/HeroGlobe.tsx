@@ -1,8 +1,8 @@
 // Wireframe globe used behind the hero headline (matches the reference design).
 // Pure SVG, scales to its container, purely decorative.
 export function HeroGlobe() {
-  const line = "rgba(43,110,163,0.24)";
-  const faint = "rgba(43,110,163,0.14)";
+  const line = "rgba(79,114,86,0.24)";
+  const faint = "rgba(79,114,86,0.14)";
   return (
     <svg viewBox="0 0 600 600" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style={{ display: 'block' }}>
       <g fill="none" strokeWidth="1">

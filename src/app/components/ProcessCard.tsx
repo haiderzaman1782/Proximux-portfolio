@@ -1,7 +1,7 @@
 export function ProcessCard({ step, icon, title, description, output }: { step: number, icon: React.ReactNode, title: string, description: string, output: string }) {
   return (
     <div className="text-center group">
-      <div className="relative inline-flex items-center justify-center mb-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.2)] text-[var(--saas-lime)] transition-all group-hover:scale-110 group-hover:bg-[rgba(43,110,163,0.2)] shadow-sm">
+      <div className="relative inline-flex items-center justify-center mb-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] text-[var(--saas-lime)] transition-all group-hover:scale-110 group-hover:bg-[rgba(79,114,86,0.2)] shadow-sm">
         {icon}
         <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] text-xs font-bold flex items-center justify-center">
           {step}

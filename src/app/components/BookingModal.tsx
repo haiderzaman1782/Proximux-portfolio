@@ -22,7 +22,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         theme: 'light',
         hideEventTypeDetails: false,
         layout: 'month_view',
-        cssVarsPerTheme: { light: { 'cal-brand': '#2b6ea3' } }
+        cssVarsPerTheme: { light: { 'cal-brand': '#4f7256' } }
       });
     })();
   }, []);

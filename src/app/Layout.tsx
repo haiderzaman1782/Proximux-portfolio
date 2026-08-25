@@ -63,7 +63,7 @@ export function Layout() {
 
         <motion.div
           className="fixed inset-0 z-0 pointer-events-none"
-          style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(43,110,163,0.04), transparent 60%)` }}
+          style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(79,114,86,0.04), transparent 60%)` }}
         />
 
         <Navbar />

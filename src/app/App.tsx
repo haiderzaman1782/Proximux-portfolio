@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './Layout';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }

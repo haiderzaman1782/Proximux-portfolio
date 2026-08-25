@@ -24,7 +24,7 @@ export function HomePage() {
       <section className="relative min-h-[82vh] md:min-h-[88vh] py-16 sm:py-20 md:py-24 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="relative w-[340px] h-[340px] sm:w-[560px] sm:h-[560px] lg:w-[760px] lg:h-[760px]">
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(43,110,163,0.07)_0%,transparent_68%)]"></div>
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(79,114,86,0.07)_0%,transparent_68%)]"></div>
             <HeroGlobe />
           </div>
         </div>
@@ -34,7 +34,7 @@ export function HomePage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.05, duration: 0.5, ease: "backOut" }}
-            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.2)] rounded-[20px] text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] rounded-[20px] text-xs sm:text-sm"
           >
             <motion.span animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
             <span className="text-[var(--saas-lime)]">2 build slots open - Q4 2026</span>

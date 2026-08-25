@@ -23,7 +23,7 @@ export function FounderCard({ name, title, focus, bio, initials, github, linkedi
     >
       <div className="flex items-center gap-4 mb-6">
         {/* Replace with a real headshot in src/assets/team/ */}
-        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.25)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.25)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
           {initials}
         </div>
         <div>

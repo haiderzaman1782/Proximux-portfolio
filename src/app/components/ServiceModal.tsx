@@ -32,7 +32,7 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
 
             <div className="flex flex-col gap-6 sm:gap-8">
               <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-                <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center bg-[rgba(43,110,163,0.1)] border border-[rgba(43,110,163,0.2)] rounded-2xl text-[var(--saas-lime)]">
+                <div className="w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] rounded-2xl text-[var(--saas-lime)]">
                   {service.icon}
                 </div>
                 <div className="flex-1">
@@ -69,7 +69,7 @@ export function ServiceModal({ service, isOpen, onClose, onBook }: { service: an
                           transition={{ delay: 0.1 + i * 0.05 }}
                           className="flex items-start gap-3 text-[var(--saas-text)]"
                         >
-                          <div className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0 rounded-full bg-[rgba(43,110,163,0.1)] flex items-center justify-center text-[var(--saas-lime)]">
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 shrink-0 rounded-full bg-[rgba(79,114,86,0.1)] flex items-center justify-center text-[var(--saas-lime)]">
                             <Plus size={10} />
                           </div>
                           <span className="text-sm sm:text-base font-medium">{feature}</span>

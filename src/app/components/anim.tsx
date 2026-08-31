@@ -7,14 +7,14 @@ export const PageLoader = () => {
       className="fixed inset-0 z-[100] bg-[var(--saas-dark-bg)] flex items-center justify-center"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
-      transition={{ duration: 0.8, delay: 1.2, ease: "easeInOut" }}
+      transition={{ duration: 0.5, delay: 0.55, ease: "easeInOut" }}
       style={{ pointerEvents: 'none' }}
     >
       <motion.span
         className="text-[var(--saas-lime)] text-2xl font-bold tracking-widest"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.8] }}
-        transition={{ duration: 1.2, times: [0, 0.2, 0.8, 1] }}
+        transition={{ duration: 0.85, times: [0, 0.25, 0.7, 1] }}
       >
         PROXIMUX
       </motion.span>

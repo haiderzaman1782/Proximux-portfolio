@@ -10,7 +10,8 @@ import { CountUp, FadeInSection, HeadingReveal } from '../components/anim';
 import { CtaBand } from '../components/CtaBand';
 import { HeroGlobe } from '../components/HeroGlobe';
 import { ProjectCard } from '../components/ProjectCard';
-import { services, projects } from '../data';
+import { ProcessCard } from '../components/ProcessCard';
+import { services, projects, processSteps } from '../data';
 
 export function HomePage() {
   const { openBooking } = useUI();
@@ -21,7 +22,7 @@ export function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[82vh] md:min-h-[88vh] py-16 sm:py-20 md:py-24 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
+      <section className="relative min-h-[68vh] md:min-h-[74vh] py-14 sm:py-16 md:py-20 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="relative w-[340px] h-[340px] sm:w-[560px] sm:h-[560px] lg:w-[760px] lg:h-[760px]">
             <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(79,114,86,0.07)_0%,transparent_68%)]"></div>
@@ -34,28 +35,28 @@ export function HomePage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.05, duration: 0.5, ease: "backOut" }}
-            className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-4 py-2 bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] rounded-[20px] text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] rounded-[20px] text-xs sm:text-sm"
           >
             <motion.span animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
-            <span className="text-[var(--saas-lime)]">2 build slots open - Q4 2026</span>
+            <span className="text-[var(--saas-lime)]">Two-founder engineering studio · 2 build slots open</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[var(--saas-text)] mb-6 sm:mb-8 leading-[1.1]"
+            className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[var(--saas-text)] mb-5 sm:mb-6 leading-[1.1]"
           >
-            Production AI systems and software, shipped by the engineers who build them.
+            We build custom AI systems and software, and ship them to production.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--saas-muted)] max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--saas-muted)] max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed"
           >
-            Proximux is a two-founder engineering studio. We build custom RAG knowledge engines, autonomous AI voice agents, and full-stack web &amp; mobile applications - in Python/FastAPI and React Native. You work directly with the engineers writing the code. No account managers. No templates.
+            Hire us to build RAG knowledge engines, AI voice agents, and full-stack web and mobile apps. You work directly with the two engineers writing the code, and you own all of it.
           </motion.p>
 
           <motion.div
@@ -69,7 +70,7 @@ export function HomePage() {
               onClick={openBooking}
               className="w-full sm:w-auto px-7 py-3 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-transform min-h-[44px] touch-manipulation whitespace-nowrap"
             >
-              Request a Technical Discovery Call
+              Book a discovery call
               <ArrowRight size={16} />
             </motion.button>
             <Link
@@ -83,10 +84,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <TrustStrip />
-
       {/* Positioning */}
-      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 bg-[var(--saas-input-bg)] border-b border-[var(--saas-border)]">
+      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 bg-[var(--saas-input-bg)] border-y border-[var(--saas-border)]">
         <div className="max-w-3xl mx-auto">
           <FadeInSection delay={0.1}>
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-[var(--saas-muted)] leading-relaxed text-center px-4">
@@ -137,6 +136,32 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* Process */}
+      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 border-t border-[var(--saas-border)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12 sm:mb-16">
+            <FadeInSection>
+              <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                How it works
+              </div>
+            </FadeInSection>
+            <HeadingReveal text="From first call to code you own." />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-8">
+            {processSteps.map((step, i) => (
+              <ProcessCard
+                key={step.title}
+                step={i + 1}
+                icon={step.icon}
+                title={step.title}
+                description={step.desc}
+                output={step.output}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects preview */}
       <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 border-t border-[var(--saas-border)] overflow-x-hidden">
         <div className="max-w-7xl mx-auto">
@@ -161,8 +186,10 @@ export function HomePage() {
         </div>
       </section>
 
+      <TrustStrip />
+
       {/* Stats */}
-      <section ref={statsRef} className="py-12 sm:py-16 md:py-24 px-4 sm:px-8 border-t border-[var(--saas-border)]">
+      <section ref={statsRef} className="py-12 sm:py-16 md:py-24 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 sm:gap-12">
             <Stat number={<CountUp end={2} start={statsInView} duration={1200} />} label="Founding engineers" />

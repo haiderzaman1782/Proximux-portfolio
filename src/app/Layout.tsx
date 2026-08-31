@@ -34,7 +34,7 @@ export function Layout() {
   // Remove the intro loader after it fades - guarantees the page is never left
   // covered (e.g. a background-opened tab pauses the fade animation).
   useEffect(() => {
-    const t = setTimeout(() => setShowLoader(false), 2200);
+    const t = setTimeout(() => setShowLoader(false), 1150);
     return () => clearTimeout(t);
   }, []);
 

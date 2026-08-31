@@ -49,3 +49,5 @@ Thumbs.db
 PROXIMUX-WIREFRAME-SPEC.md
 .claude/launch.json
 .env.example
+/voice-agent
+*.md

@@ -6,7 +6,7 @@ import { useUI } from '../ui-context';
 
 const NAV = [
   { name: "Services", to: "/services" },
-  { name: "Work", to: "/work" },
+  { name: "Demos", to: "/work" },
   { name: "Projects", to: "/projects" },
   { name: "About", to: "/about" },
   { name: "Contact", to: "/contact" }
@@ -30,15 +30,17 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 1.4, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 50,
         height: '64px',
         borderBottom: `1px solid var(--saas-border)`,
-        backgroundColor: scrolled ? 'var(--saas-nav-scrolled)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        backgroundColor: 'var(--saas-nav-scrolled)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.05)' : 'none',
         transition: 'all 200ms ease'
       }}
     >

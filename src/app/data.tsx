@@ -7,6 +7,7 @@ import { RagDiagram } from './components/diagrams/RagDiagram';
 import { VoiceDiagram } from './components/diagrams/VoiceDiagram';
 import { MobileDiagram } from './components/diagrams/MobileDiagram';
 import { SentimentDiagram } from './components/diagrams/SentimentDiagram';
+import haiderImage from "../assets/haider.png";
 
 // NOTE: every ‹...› below is a REAL number or asset you must supply before launch.
 // If you don't have it yet, cut the claim - do not estimate.
@@ -181,17 +182,40 @@ export const proofCases = [
 export const founders = [
   {
     name: "Haider Zaman",
-    title: "Lead AI Architect",
+    image: haiderImage,
+    title: "Lead AI Engineer",
+    number: "+923069262541",
+    email: "haiderzaman1781@gmail.com",
+    linkedin: "https://www.linkedin.com/in/haider-zaman-458b61312/",
+    github: "https://github.com/haiderzaman1782",
+    website: "https://haider.proximux.online",
+    mobile: true,
+    location: "Faisalabad, Pakistan",
     focus: "RAG pipelines · autonomous voice agents · LLM systems · Python / FastAPI",
-    bio: "‹One honest line - e.g. \"Builds the retrieval and voice systems. N yrs shipping ML in production.\"›",
+    bio: "Builds the retrieval and voice systems. N yrs shipping ML in production.",
     initials: "HZ"
   },
   {
-    name: "[ Co-Founder ]",
-    title: "Mobile & Systems Engineering Lead",
-    focus: "React Native · iOS / Android · full-stack web · infrastructure · CI/CD",
-    bio: "‹One honest line - e.g. \"Owns mobile + platform. Shipped N apps to the App Store / Play Store.\"›",
-    initials: "CF"
+    name: "Ramish Anwar",
+    title: "Lead Mobile Engineer",
+    mobile: true,
+    number: "+923194292197",
+    email: "ramish@example.com",
+    location: "Faisalabad, Pakistan",
+    focus: "React Native · iOS / Android · Full-Stack Web · CI/CD",
+    bio: "Builds the mobile app. Shipped N apps to the App Store / Play Store.",
+    initials: "RA"
+  },
+  {
+    name: "Abdul Rehman",
+    title: "Digital Marketing Lead",
+    mobile: true,
+    number: "+923001234567",
+    email: "abdul@example.com",
+    location: "Faisalabad, Pakistan",
+    focus: "SEO · SEM · Social Media · Content Marketing",
+    bio: "SEO, SEM, Social Media, and Content Marketing expert with a passion for driving organic traffic and engagement.",
+    initials: "AR"
   }
 ];
 

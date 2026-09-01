@@ -15,13 +15,13 @@ export function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <PageHeader
             eyebrow="Who you'll work with"
-            title="Two founders. You talk to the people writing the code."
-            intro="No layers, no handoffs. The engineers who scope your project are the ones who ship it."
+            title="Meet the team. You talk to the people doing the work."
+            intro="No layers, no account managers. The people who scope your project are the ones who build and ship it."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {founders.map((f, i) => (
-              <FounderCard key={f.title} index={i} onBook={openBooking} {...f} />
+              <FounderCard key={f.name} index={i} onBook={openBooking} {...f} />
             ))}
           </div>
         </div>

@@ -1,15 +1,14 @@
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import {
-  Github, Linkedin, Twitter, Facebook, Instagram, Youtube,
-  Globe, Mail, Phone, MapPin, CalendarDays
+  Github, Linkedin, Globe, Mail, Phone, MapPin, CalendarDays,
 } from 'lucide-react';
 
-// lucide 0.487 ships no TikTok brand mark, so inline one at the same 16px as the row.
-function TikTokIcon({ size = 16 }: { size?: number }) {
+// lucide 0.487 ships no WhatsApp brand mark either, so inline one to match.
+function WhatsappIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M16.5 3c.28 2.08 1.45 3.6 3.5 3.87v2.4c-1.28.08-2.48-.3-3.5-1v6.9c0 3.48-2.4 5.83-5.6 5.83-3 0-5.4-2.35-5.4-5.6 0-3 2.1-5.2 5-5.2.3 0 .6.02.9.07v2.6a2.6 2.6 0 0 0-.9-.16c-1.4 0-2.4 1.06-2.4 2.55 0 1.55 1.05 2.66 2.55 2.66 1.5 0 2.55-1.1 2.55-3V3h3.3z" />
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.4-1.48-.89-.8-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.44-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.65 2.76a9.35 9.35 0 0 1 2.77 6.66c0 5.19-4.24 9.41-9.42 9.41zM20.52 3.49A11.78 11.78 0 0 0 12.04 0C5.5 0 .18 5.32.18 11.86c0 2.09.55 4.13 1.59 5.93L0 24l6.34-1.66a11.85 11.85 0 0 0 5.69 1.45h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.48-8.4z" />
     </svg>
   );
 }
@@ -18,7 +17,7 @@ type Social = { href: string; label: string; icon: ReactNode };
 
 export function FounderCard({
   name, title, focus, bio, initials, location, image,
-  github, linkedin, twitter, facebook, instagram, youtube, tiktok, website,
+  github, linkedin, website, whatsapp,
   email, number, mobile, onBook, index,
 }: {
   name: string;
@@ -28,13 +27,9 @@ export function FounderCard({
   initials: string;
   location?: string;
   image?: string;
+  whatsapp?: string;
   github?: string;
   linkedin?: string;
-  twitter?: string;
-  facebook?: string;
-  instagram?: string;
-  youtube?: string;
-  tiktok?: string;
   website?: string;
   email?: string;
   number?: string;
@@ -45,14 +40,10 @@ export function FounderCard({
   const socials: Social[] = [
     github && { href: github, label: 'GitHub', icon: <Github size={16} /> },
     linkedin && { href: linkedin, label: 'LinkedIn', icon: <Linkedin size={16} /> },
-    twitter && { href: twitter, label: 'Twitter / X', icon: <Twitter size={16} /> },
-    instagram && { href: instagram, label: 'Instagram', icon: <Instagram size={16} /> },
-    facebook && { href: facebook, label: 'Facebook', icon: <Facebook size={16} /> },
-    youtube && { href: youtube, label: 'YouTube', icon: <Youtube size={16} /> },
-    tiktok && { href: tiktok, label: 'TikTok', icon: <TikTokIcon size={16} /> },
     website && { href: website, label: 'Website', icon: <Globe size={16} /> },
     email && { href: `mailto:${email}`, label: 'Email', icon: <Mail size={16} /> },
     mobile && number && { href: `tel:${number}`, label: 'Call', icon: <Phone size={16} /> },
+    whatsapp && { href: whatsapp, label: 'WhatsApp', icon: <WhatsappIcon size={16} /> },
   ].filter(Boolean) as Social[];
 
   return (

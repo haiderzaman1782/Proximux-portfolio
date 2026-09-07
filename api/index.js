@@ -208,8 +208,27 @@ app.post('/api/chat', async (req, res) => {
       grounded: true
     });
   } catch (e) {
-    console.error('Chat error:', e);
-    res.status(500).json({ error: 'Something went wrong answering that.', detail: String((e && e.message) || e) });
+    // undici's fetch() rejects with a terse "fetch failed"; the real reason
+    // (DNS ENOTFOUND, ECONNREFUSED, TLS, a timeout) lives on e.cause. Surface
+    // it so logs and curl show the actual cause, not just "fetch failed".
+    const cause = e && e.cause;
+    const detail = [String((e && e.message) || e), cause && (cause.code || cause.message)]
+      .filter(Boolean)
+      .join(': ');
+    console.error('Chat error:', detail, e);
+
+    // A connection-level failure means a dependency (the Supabase knowledge
+    // base or the LLM host) was unreachable, not a bug in this request. Return
+    // 503 with a visitor-friendly message; keep the technical reason in detail.
+    const netCodes = ['ENOTFOUND', 'ECONNREFUSED', 'EAI_AGAIN', 'ETIMEDOUT', 'ECONNRESET'];
+    const unreachable = (e && e.message === 'fetch failed') || (cause && netCodes.includes(cause.code));
+    if (unreachable) {
+      return res.status(503).json({
+        error: 'The assistant is temporarily unavailable. Please try again in a moment, or email hello@proximux.online.',
+        detail
+      });
+    }
+    res.status(500).json({ error: 'Something went wrong answering that.', detail });
   }
 });
 

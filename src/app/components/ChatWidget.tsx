@@ -49,7 +49,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
       });
       if (!res.ok) {
         const detail = await res.json().catch(() => ({}));
-        throw new Error(detail.detail || detail.error || `Request failed (${res.status})`);
+        throw new Error(detail.error || detail.detail || `Request failed (${res.status})`);
       }
       const data = await res.json();
       next = { role: 'assistant', text: data.answer, sources: data.sources, latency: data.latency_ms };

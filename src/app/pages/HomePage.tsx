@@ -8,6 +8,7 @@ import { FeatureCard } from '../components/FeatureCard';
 import { Stat } from '../components/Stat';
 import { CountUp, FadeInSection, HeadingReveal } from '../components/anim';
 import { CtaBand } from '../components/CtaBand';
+import { HeroGlobe } from '../components/HeroGlobe';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProcessCard } from '../components/ProcessCard';
 import { services, projects, processSteps } from '../data';
@@ -22,8 +23,13 @@ export function HomePage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[68vh] md:min-h-[74vh] py-14 sm:py-16 md:py-20 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
-        {/* soft accent glow behind the headline (dots come from the app shell) */}
-        <div className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] max-w-[96vw] pointer-events-none bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_62%)]"></div>
+        {/* wireframe globe + soft accent glow behind the headline (paper texture comes from the app shell) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none py-10 sm:py-14">
+          <div className="relative w-[300px] h-[300px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] max-w-[90vw] max-h-[56vh]">
+            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_68%)]"></div>
+            <HeroGlobe />
+          </div>
+        </div>
 
         <div className="relative z-10 text-center max-w-5xl mx-auto">
           <motion.div

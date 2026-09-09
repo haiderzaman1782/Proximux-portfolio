@@ -28,11 +28,11 @@ export function AboutPage() {
       </section>
 
       {/* Process */}
-      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[var(--saas-input-bg)] border-y border-[var(--saas-border)]">
+      <section className="dotted-band py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 border-y border-[var(--saas-border)]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14 sm:mb-20">
             <FadeInSection>
-              <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+              <div className="inline-block mb-3 text-[11px] sm:text-xs font-medium uppercase tracking-[0.14em] font-mono text-[var(--saas-lime)]">
                 How we work
               </div>
             </FadeInSection>

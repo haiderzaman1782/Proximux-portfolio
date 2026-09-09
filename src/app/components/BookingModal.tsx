@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CalendarDays } from 'lucide-react';
 import Cal, { getCalApi } from '@calcom/embed-react';
@@ -25,23 +26,29 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
 }
 
 export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const { resolvedTheme } = useTheme();
+  const calTheme = resolvedTheme === 'dark' ? 'dark' : 'light';
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  // Configure the Cal embed once (dark theme + lime brand colour).
+  // Configure the Cal embed to match the active theme + accent.
   useEffect(() => {
     (async () => {
       const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal('ui', {
-        theme: 'light',
+        theme: calTheme,
         hideEventTypeDetails: false,
         layout: 'month_view',
-        cssVarsPerTheme: { light: { 'cal-brand': '#4f7256' } }
+        cssVarsPerTheme: {
+          light: { 'cal-brand': '#be5330' },
+          dark: { 'cal-brand': '#c8f169' }
+        }
       });
     })();
-  }, []);
+  }, [calTheme]);
 
   return (
     <AnimatePresence>
@@ -86,7 +93,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
                 namespace={CAL_NAMESPACE}
                 calLink={CAL_LINK}
                 style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-                config={{ layout: 'month_view', theme: 'light' }}
+                config={{ layout: 'month_view', theme: calTheme }}
               />
             </div>
 

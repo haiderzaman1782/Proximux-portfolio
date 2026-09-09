@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
 import { PageLoader } from './components/anim';
 import { Navbar } from './components/Navbar';
@@ -17,7 +17,9 @@ export function Layout() {
   const [contactOpen, setContactOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const mx = useMotionValue(-400);
+  const my = useMotionValue(-400);
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mx}px ${my}px, var(--accent-spotlight), transparent 60%)`;
   const [showLoader, setShowLoader] = useState(true);
   const [chatOpen, setChatOpen] = useState(false);
   const { pathname } = useLocation();
@@ -40,14 +42,14 @@ export function Layout() {
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 100);
-    const onMove = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
+    const onMove = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
     window.addEventListener('scroll', onScroll);
     window.addEventListener('mousemove', onMove);
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('mousemove', onMove);
     };
-  }, []);
+  }, [mx, my]);
 
   const ui = useMemo(() => ({
     openBooking: () => setBookingOpen(true),
@@ -58,12 +60,15 @@ export function Layout() {
 
   return (
     <UIContext.Provider value={ui}>
-      <div style={{ backgroundColor: 'var(--saas-dark-bg)', color: 'var(--saas-text)', minHeight: '100vh', overflowX: 'clip' }}>
+      <div className="app-shell" style={{ color: 'var(--saas-text)', minHeight: '100vh', overflowX: 'clip' }}>
+        {/* Fixed paper-grain texture, pinned behind the whole site (light mode only) */}
+        <div className="paper-bg" aria-hidden="true" />
+
         {showLoader && <PageLoader />}
 
         <motion.div
           className="fixed inset-0 z-0 pointer-events-none"
-          style={{ background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(79,114,86,0.04), transparent 60%)` }}
+          style={{ background: spotlight }}
         />
 
         <Navbar />

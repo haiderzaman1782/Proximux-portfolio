@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { useUI } from '../ui-context';
+import { ThemeToggle } from './ThemeToggle';
 
 const NAV = [
   { name: "Services", to: "/services" },
@@ -16,6 +17,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { openBooking } = useUI();
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.4 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -40,13 +44,13 @@ export function Navbar() {
         backgroundColor: 'var(--saas-nav-scrolled)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        boxShadow: scrolled ? '0 1px 12px rgba(0,0,0,0.05)' : 'none',
-        transition: 'all 200ms ease'
+        boxShadow: scrolled ? '0 1px 12px hsl(var(--shadow-color) / 0.10)' : 'none',
+        transition: 'box-shadow 200ms ease'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 h-full flex items-center justify-between">
         <Link to="/" className="flex items-center gap-1 touch-manipulation min-h-[44px]" style={{ fontFamily: 'var(--font-syne)' }}>
-          <span className="text-xl sm:text-2xl font-extrabold text-[var(--saas-text)]">PROXIMUX</span>
+          <span className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--saas-text)]">PROXIMUX</span>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--saas-lime)', display: 'inline-block' }}></span>
         </Link>
 
@@ -59,22 +63,44 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <button
+          <ThemeToggle />
+          <motion.button
             onClick={openBooking}
-            className="touch-manipulation min-h-[44px] px-5 sm:px-6 py-2 border border-[var(--saas-border)] hover:border-[var(--saas-lime)] text-[var(--saas-text)] rounded-[24px] text-sm lg:text-base font-medium transition-colors"
+            initial="rest"
+            whileHover="hover"
+            whileTap="tap"
+            variants={{
+              rest: { y: 0 },
+              hover: { y: -2 },
+              tap: { y: 0, scale: 0.98 }
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="group touch-manipulation min-h-[44px] px-5 sm:px-6 py-2 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-full text-sm lg:text-base font-semibold flex items-center gap-2 shadow-tint-sm"
           >
             Book a Call
-          </button>
+            <motion.span variants={{ rest: { x: 0 }, hover: { x: 3 } }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
+              <ArrowRight size={16} />
+            </motion.span>
+          </motion.button>
         </div>
 
-        <button
-          className="flex md:hidden touch-manipulation min-h-[44px] min-w-[44px] p-2 items-center justify-center text-[var(--saas-text)]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex md:hidden items-center gap-1">
+          <ThemeToggle />
+          <button
+            className="touch-manipulation min-h-[44px] min-w-[44px] p-2 flex items-center justify-center text-[var(--saas-text)]"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
+
+      {/* scroll-progress line */}
+      <motion.div
+        style={{ scaleX: progress, transformOrigin: '0% 50%' }}
+        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-[var(--saas-lime)] opacity-70"
+      />
 
       <AnimatePresence>
         {mobileOpen && (
@@ -99,7 +125,7 @@ export function Navbar() {
               <hr className="border-[var(--saas-border)]" />
               <button
                 onClick={() => { openBooking(); setMobileOpen(false); }}
-                className="touch-manipulation min-h-[44px] w-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[24px] font-medium text-lg py-2"
+                className="touch-manipulation min-h-[44px] w-full bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-full font-semibold text-lg py-2.5"
               >
                 Book a Technical Call
               </button>

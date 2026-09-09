@@ -8,7 +8,6 @@ import { FeatureCard } from '../components/FeatureCard';
 import { Stat } from '../components/Stat';
 import { CountUp, FadeInSection, HeadingReveal } from '../components/anim';
 import { CtaBand } from '../components/CtaBand';
-import { HeroGlobe } from '../components/HeroGlobe';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProcessCard } from '../components/ProcessCard';
 import { services, projects, processSteps } from '../data';
@@ -23,31 +22,27 @@ export function HomePage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[68vh] md:min-h-[74vh] py-14 sm:py-16 md:py-20 flex items-center justify-center px-4 sm:px-8 lg:px-16 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="relative w-[340px] h-[340px] sm:w-[560px] sm:h-[560px] lg:w-[760px] lg:h-[760px]">
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(79,114,86,0.07)_0%,transparent_68%)]"></div>
-            <HeroGlobe />
-          </div>
-        </div>
+        {/* soft accent glow behind the headline (dots come from the app shell) */}
+        <div className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] max-w-[96vw] pointer-events-none bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_62%)]"></div>
 
         <div className="relative z-10 text-center max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.05, duration: 0.5, ease: "backOut" }}
-            className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.2)] rounded-[20px] text-xs sm:text-sm"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 bg-[var(--saas-card-bg)] border border-[var(--saas-border)] rounded-full text-xs sm:text-sm shadow-tint-sm"
           >
-            <motion.span animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
-            <span className="text-[var(--saas-lime)]">Two-founder engineering studio · 2 build slots open</span>
+            <motion.span animate={{ scale: [1, 1.35, 1], opacity: [1, 0.5, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full bg-[var(--saas-lime)] inline-block"></motion.span>
+            <span className="text-[var(--saas-muted)]">Two-founder engineering studio · <span className="text-[var(--saas-lime)] font-medium">2 build slots open</span></span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-syne text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[var(--saas-text)] mb-5 sm:mb-6 leading-[1.1]"
+            className="font-syne text-[clamp(2.6rem,1.7rem+3.1vw,4.35rem)] font-semibold tracking-[-0.025em] text-[var(--saas-text)] mb-5 sm:mb-6 leading-[1.04]"
           >
-            We build custom AI systems and software, and ship them to production.
+            We build custom AI systems and software, and <span className="font-serif italic font-normal text-[var(--saas-lime)]">ship them to production.</span>
           </motion.h1>
 
           <motion.p
@@ -66,26 +61,30 @@ export function HomePage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto max-w-[320px] sm:max-w-none mx-auto"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
               onClick={openBooking}
-              className="w-full sm:w-auto px-7 py-3 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-transform min-h-[44px] touch-manipulation whitespace-nowrap"
+              initial="rest" whileHover="hover" whileTap="tap"
+              variants={{ rest: { y: 0 }, hover: { y: -2 }, tap: { y: 0, scale: 0.98 } }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="group w-full sm:w-auto px-7 py-3.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 min-h-[44px] touch-manipulation whitespace-nowrap shadow-tint-lg"
             >
               Book a discovery call
-              <ArrowRight size={16} />
+              <motion.span variants={{ rest: { x: 0 }, hover: { x: 3 } }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
+                <ArrowRight size={16} />
+              </motion.span>
             </motion.button>
             <Link
               to="/work"
-              className="w-full sm:w-auto px-7 py-3 border border-[var(--saas-border)] hover:border-[var(--saas-lime)] text-[var(--saas-text)] rounded-[24px] font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-colors min-h-[44px] touch-manipulation whitespace-nowrap"
+              className="group w-full sm:w-auto px-7 py-3.5 border border-[var(--saas-border)] hover:border-[var(--saas-lime)] hover:text-[var(--saas-lime)] text-[var(--saas-text)] rounded-full font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-colors min-h-[44px] touch-manipulation whitespace-nowrap"
             >
               See our work
-              <ArrowRight size={16} />
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </motion.div>
         </div>
       </section>
 
       {/* Positioning */}
-      <section className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 bg-[var(--saas-input-bg)] border-y border-[var(--saas-border)]">
+      <section className="dotted-band py-16 sm:py-24 lg:py-28 px-4 sm:px-8 border-y border-[var(--saas-border)]">
         <div className="max-w-3xl mx-auto">
           <FadeInSection delay={0.1}>
             <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-[var(--saas-muted)] leading-relaxed text-center px-4">
@@ -101,7 +100,7 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 sm:mb-16">
             <div>
               <FadeInSection>
-                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <div className="inline-block mb-3 text-[11px] sm:text-xs font-medium uppercase tracking-[0.14em] font-mono text-[var(--saas-lime)]">
                   What we engineer
                 </div>
               </FadeInSection>
@@ -141,7 +140,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 sm:mb-16">
             <FadeInSection>
-              <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+              <div className="inline-block mb-3 text-[11px] sm:text-xs font-medium uppercase tracking-[0.14em] font-mono text-[var(--saas-lime)]">
                 How it works
               </div>
             </FadeInSection>
@@ -168,7 +167,7 @@ export function HomePage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 sm:mb-16">
             <div>
               <FadeInSection>
-                <div className="inline-block mb-4 px-4 py-1.5 bg-[var(--saas-lime)] text-[var(--saas-on-accent)] rounded-[20px] text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <div className="inline-block mb-3 text-[11px] sm:text-xs font-medium uppercase tracking-[0.14em] font-mono text-[var(--saas-lime)]">
                   What we've built
                 </div>
               </FadeInSection>

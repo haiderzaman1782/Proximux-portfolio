@@ -17,10 +17,10 @@ export function FeatureCard({ icon, title, oneLiner, highlight, stack, className
         hidden: { opacity: 0, y: 40, scale: 0.97 },
         visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
       }}
-      whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
       onClick={onClick}
-      className={`p-6 sm:p-8 lg:p-10 transition-all duration-300 relative group flex flex-col h-full bg-[var(--saas-card-bg)] hover:bg-[var(--saas-hover-bg)] cursor-pointer ${className || ''}`}
+      className={`p-6 sm:p-8 lg:p-10 transition-all duration-300 relative group flex flex-col h-full bg-[var(--saas-card-bg)] hover:bg-[var(--saas-hover-bg)] hover:shadow-tint-lg cursor-pointer ${className || ''}`}
     >
       <div className="mb-6">{icon}</div>
       <h3 className="font-syne text-lg sm:text-xl lg:text-2xl font-bold text-[var(--saas-text)] mb-3 leading-tight">

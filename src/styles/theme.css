@@ -1,45 +1,152 @@
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Soft sage — low-eye-strain light theme. Off-white cards, muted green accent, white on-accent. */
-  --saas-dark-bg: #eff3ec;
-  --saas-lime: #4f7256;
-  --saas-card-bg: #f9fcf7;
-  --saas-border: #d9e2d2;
-  --saas-text: #2c342c;
-  --saas-muted: #697566;
-  --saas-hover-bg: #e7eee2;
-  --saas-input-bg: #f3f7f1;
-  --saas-inner-bg: #e7eee2;
-  --saas-on-accent: #ffffff;
-  --saas-nav-scrolled: rgba(239, 243, 236, 0.8);
+/* ============================================================================
+   PROXIMUX — two-theme material system
+   · KILN     (light)  unbleached bone paper · graphite ink · terracotta accent
+   · GRAPHITE (dark)   cooled anthracite · soft off-white · electric lime signal
+   Components consume the --saas-* + shadcn tokens below, so both themes flow
+   through the whole site from these two blocks.
+   ========================================================================== */
 
-  /* Original theme variables */
+:root {
+  color-scheme: light;
+  /* ---- KILN (light) ---- */
+  --saas-dark-bg:     #f3efe7;   /* page background (warm bone, not white) */
+  --saas-lime:        #be5330;   /* primary accent (oxidized terracotta) */
+  --saas-lime-hover:  #a5431f;
+  --saas-card-bg:     #fcfaf5;   /* elevated surface */
+  --saas-border:      #e1dacc;   /* hairline */
+  --saas-text:        #211e1a;   /* warm near-black ink */
+  --saas-muted:       #6c6559;   /* muted warm taupe */
+  --saas-hover-bg:    #ede8dd;
+  --saas-input-bg:    #ece6da;
+  --saas-inner-bg:    #ece6da;
+  --saas-on-accent:   #ffffff;
+  --saas-nav-scrolled: rgba(243, 239, 231, 0.72);
+
+  /* accent washes (replace hardcoded rgba greens across components) */
+  --accent-tint:        rgba(190, 83, 48, 0.10);
+  --accent-tint-strong: rgba(190, 83, 48, 0.20);
+  --accent-ring:        rgba(190, 83, 48, 0.25);
+  --accent-glow:        rgba(190, 83, 48, 0.08);
+  --accent-spotlight:   rgba(190, 83, 48, 0.05);
+  --globe-line:         rgba(190, 83, 48, 0.24);
+  --globe-faint:        rgba(190, 83, 48, 0.13);
+  --hero-dot:           #cdbfa9;
+
+  /* CTA pine panel (a branded, theme-aware block) */
+  --cta-bg:        #14302b;
+  --cta-text:      #f3efe7;
+  --cta-muted:     #9db0a4;
+  --cta-accent:    #be5330;
+  --cta-on-accent: #ffffff;
+  --cta-glow:      rgba(190, 83, 48, 0.22);
+  --cta-border:    rgba(255, 255, 255, 0.08);
+
+  /* diagram (inline-SVG) palette */
+  --dgm-box:        #ece6da;
+  --dgm-box-border: #d8cfbe;
+  --dgm-text:       #211e1a;
+  --dgm-muted:      #6c6559;
+  --dgm-accent:     #be5330;
+  --dgm-accent-bg:  rgba(190, 83, 48, 0.09);
+  --dgm-line:       #8f8574;
+
+  /* tinted, layered elevation (no pure black on paper) */
+  --shadow-color: 28 22% 18%;
+
+  /* shadcn tokens */
   --font-size: 16px;
-  --background: #eff3ec;
-  --foreground: #2c342c;
-  --card: #f9fcf7;
-  --card-foreground: #2c342c;
-  --popover: #f9fcf7;
-  --popover-foreground: #2c342c;
-  --primary: #4f7256;
+  --background: #f3efe7;
+  --foreground: #211e1a;
+  --card: #fcfaf5;
+  --card-foreground: #211e1a;
+  --popover: #fcfaf5;
+  --popover-foreground: #211e1a;
+  --primary: #be5330;
   --primary-foreground: #ffffff;
-  --secondary: #e7eee2;
-  --secondary-foreground: #2c342c;
-  --muted: #e7eee2;
-  --muted-foreground: #697566;
-  --accent: #dde8d6;
-  --accent-foreground: #4f7256;
-  --destructive: #d4183d;
+  --secondary: #ece6da;
+  --secondary-foreground: #211e1a;
+  --muted: #ece6da;
+  --muted-foreground: #6c6559;
+  --accent: #efe1d8;
+  --accent-foreground: #be5330;
+  --destructive: #c0392b;
   --destructive-foreground: #ffffff;
-  --border: #d9e2d2;
-  --input: #d9e2d2;
-  --input-background: #f3f7f1;
-  --switch-background: #d9e2d2;
+  --border: #e1dacc;
+  --input: #e1dacc;
+  --input-background: #ece6da;
+  --switch-background: #d8cfbe;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #4f7256;
+  --ring: #be5330;
   --radius: 0.75rem;
+}
+
+.dark {
+  color-scheme: dark;
+  /* ---- GRAPHITE (dark) ---- */
+  --saas-dark-bg:     #0f1216;   /* near-black cool anthracite */
+  --saas-lime:        #c8f169;   /* primary accent (electric signal lime) */
+  --saas-lime-hover:  #d6f884;
+  --saas-card-bg:     #171b21;   /* elevated surface */
+  --saas-border:      #262d37;   /* hairline */
+  --saas-text:        #e9ebee;   /* soft off-white (not pure white) */
+  --saas-muted:       #969ca6;
+  --saas-hover-bg:    #1d222a;
+  --saas-input-bg:    #12161b;
+  --saas-inner-bg:    #1b2027;
+  --saas-on-accent:   #12160b;   /* dark ink on lime */
+  --saas-nav-scrolled: rgba(15, 18, 22, 0.72);
+
+  --accent-tint:        rgba(200, 241, 105, 0.12);
+  --accent-tint-strong: rgba(200, 241, 105, 0.20);
+  --accent-ring:        rgba(200, 241, 105, 0.30);
+  --accent-glow:        rgba(200, 241, 105, 0.10);
+  --accent-spotlight:   rgba(200, 241, 105, 0.06);
+  --globe-line:         rgba(200, 241, 105, 0.22);
+  --globe-faint:        rgba(200, 241, 105, 0.11);
+  --hero-dot:           #262d37;
+
+  --cta-bg:        #12241f;
+  --cta-text:      #e9f0ec;
+  --cta-muted:     #8ea79a;
+  --cta-accent:    #c8f169;
+  --cta-on-accent: #12160b;
+  --cta-glow:      rgba(200, 241, 105, 0.16);
+  --cta-border:    rgba(255, 255, 255, 0.07);
+
+  --dgm-box:        #1b2027;
+  --dgm-box-border: #2a323c;
+  --dgm-text:       #e9ebee;
+  --dgm-muted:      #969ca6;
+  --dgm-accent:     #c8f169;
+  --dgm-accent-bg:  rgba(200, 241, 105, 0.10);
+  --dgm-line:       #6b7280;
+
+  --shadow-color: 220 45% 2%;
+
+  --background: #0f1216;
+  --foreground: #e9ebee;
+  --card: #171b21;
+  --card-foreground: #e9ebee;
+  --popover: #171b21;
+  --popover-foreground: #e9ebee;
+  --primary: #c8f169;
+  --primary-foreground: #12160b;
+  --secondary: #1b2027;
+  --secondary-foreground: #e9ebee;
+  --muted: #1b2027;
+  --muted-foreground: #969ca6;
+  --accent: #1f2a17;
+  --accent-foreground: #c8f169;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #262d37;
+  --input: #262d37;
+  --input-background: #12161b;
+  --switch-background: #2a323c;
+  --ring: #c8f169;
 }
 
 @theme inline {
@@ -69,10 +176,16 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Site typeface - Figtree (free Google Font, closest match to Instagram Sans).
-     Both tokens point to Figtree so headings and body share one family. */
-  --font-syne: "Figtree", sans-serif;
-  --font-dm-sans: "Figtree", sans-serif;
+  /* Type system — display grotesk · body sans · editorial serif · technical mono */
+  --font-syne: "Space Grotesk", system-ui, sans-serif;      /* headings / display */
+  --font-dm-sans: "Inter", system-ui, sans-serif;           /* body */
+  --font-serif: "Instrument Serif", Georgia, serif;         /* editorial accents */
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Fluid type ramp (375px → 1440px) */
+  --text-display: clamp(2.6rem, 1.7rem + 3.1vw, 4.35rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.025em;
 }
 
 @layer base {
@@ -118,6 +231,11 @@
   a {
     @apply touch-manipulation;
   }
+
+  /* Micro-typography — the part people feel but cannot name */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  .font-mono, .tabular-nums { font-variant-numeric: tabular-nums slashed-zero; }
 }
 
 /* Custom Utilities for responsive sections */
@@ -128,6 +246,58 @@
 
   .touch-target {
     @apply min-h-[44px] min-w-[44px];
+  }
+
+  .app-shell { position: relative; }
+
+  /* Paper-grain texture: a fixed layer pinned behind the whole site (light mode).
+     position:fixed + z-index:-10 keeps it stuck to the viewport while the page
+     scrolls, and behind all content. Hidden on Graphite (dark). */
+  .paper-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background-color: var(--saas-dark-bg);
+    background-image: url('/paper-light.png');
+    background-repeat: repeat;
+    background-position: center top;
+  }
+  .dark .paper-bg { display: none; }
+
+  /* Alternating bands: translucent in light so the fixed texture shows through;
+     solid on Graphite where there is no texture layer. */
+  .dotted-band { background-color: rgba(33, 30, 26, 0.035); }
+  .dark .dotted-band { background-color: var(--saas-input-bg); }
+
+  /* tinted, layered elevation */
+  .shadow-tint-sm {
+    box-shadow:
+      0 1px 2px -1px hsl(var(--shadow-color) / 0.06),
+      0 2px 6px -1px hsl(var(--shadow-color) / 0.05);
+  }
+  .shadow-tint-lg {
+    box-shadow:
+      0 2px 4px -1px hsl(var(--shadow-color) / 0.04),
+      0 12px 28px -6px hsl(var(--shadow-color) / 0.10);
+  }
+  .shadow-tint-xl {
+    box-shadow:
+      0 4px 8px -2px hsl(var(--shadow-color) / 0.06),
+      0 24px 48px -8px hsl(var(--shadow-color) / 0.12);
+  }
+  /* lit top edge — the crisp light-card recipe */
+  .surface-lit {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.55),
+      0 1px 2px -1px hsl(var(--shadow-color) / 0.06),
+      0 2px 6px -1px hsl(var(--shadow-color) / 0.05);
+  }
+  .dark .surface-lit {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
+      0 1px 2px -1px hsl(var(--shadow-color) / 0.5),
+      0 2px 6px -1px hsl(var(--shadow-color) / 0.4);
   }
 
   .custom-scrollbar::-webkit-scrollbar {

@@ -1,1 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap');
+/* Fonts are loaded via <link rel="stylesheet"> in index.html (with preconnect,
+   which is faster than @import and does not block render):
+     Space Grotesk (display) · Inter (body) · Instrument Serif (accents) · IBM Plex Mono (metrics).
+   Kept as an import here too so the fonts still resolve if index.html is bypassed. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap');

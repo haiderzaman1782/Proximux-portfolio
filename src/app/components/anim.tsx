@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 
 export const PageLoader = () => {
+  const reduce = useReducedMotion();
+  if (reduce) return null;
   return (
     <motion.div
       className="fixed inset-0 z-[100] bg-[var(--saas-dark-bg)] flex items-center justify-center"
@@ -11,7 +13,7 @@ export const PageLoader = () => {
       style={{ pointerEvents: 'none' }}
     >
       <motion.span
-        className="text-[var(--saas-lime)] text-2xl font-bold tracking-widest"
+        className="font-syne text-[var(--saas-lime)] text-2xl font-bold tracking-widest"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.8] }}
         transition={{ duration: 0.85, times: [0, 0.25, 0.7, 1] }}
@@ -28,7 +30,7 @@ export const HeadingReveal = ({ text, delay = 0, className = "" }: { text: strin
   const words = text.split(" ");
 
   return (
-    <h2 ref={ref} className={`flex flex-wrap gap-x-1.5 sm:gap-x-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold ${className}`}>
+    <h2 ref={ref} className={`font-syne flex flex-wrap gap-x-1.5 sm:gap-x-3 text-[clamp(1.9rem,1.4rem+1.4vw,2.9rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-[var(--saas-text)] ${className}`}>
       {words.map((word, i) => (
         <span key={i} className="overflow-hidden inline-block h-fit py-1">
           <motion.span
@@ -74,9 +76,11 @@ export const FadeInSection = ({ children, delay = 0, direction = "up" }: { child
 
 export const CountUp = ({ end, duration = 2000, suffix = "", start = false }: { end: number, duration?: number, suffix?: string, start?: boolean }) => {
   const [count, setCount] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (!start) return;
+    if (reduce) { setCount(end); return; }
     let startTime: number | null = null;
 
     const animate = (timestamp: number) => {
@@ -92,7 +96,7 @@ export const CountUp = ({ end, duration = 2000, suffix = "", start = false }: { 
     };
 
     requestAnimationFrame(animate);
-  }, [start, end, duration]);
+  }, [start, end, duration, reduce]);
 
   return <span>{count}{suffix}</span>;
 };

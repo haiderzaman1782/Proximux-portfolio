@@ -17,7 +17,7 @@ export function Stat({ number, label }: { number: React.ReactNode, label: string
       } : {}}
       className="text-center"
     >
-      <div className="font-syne text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--saas-text)] leading-none mb-4">
+      <div className="font-mono tabular-nums text-4xl sm:text-5xl lg:text-6xl font-medium text-[var(--saas-text)] leading-none mb-4 tracking-tight">
         {number}
       </div>
       <div className="text-xs sm:text-sm md:text-base text-[var(--saas-muted)] uppercase tracking-widest font-medium">

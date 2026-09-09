@@ -58,12 +58,12 @@ export function FounderCard({
       <div className="flex items-center gap-4 mb-6">
         {/* Replace with a real headshot in src/assets/team/ */}
         {image && (
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.25)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[var(--accent-tint)] border border-[var(--accent-ring)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
             <img src={image} alt={name} className="w-full h-full object-cover rounded-full" />
           </div>
         )}
         {!image && (
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[rgba(79,114,86,0.1)] border border-[rgba(79,114,86,0.25)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[var(--accent-tint)] border border-[var(--accent-ring)] flex items-center justify-center text-[var(--saas-lime)] font-syne font-extrabold text-lg sm:text-xl shrink-0">
             {initials}
           </div>
         )}

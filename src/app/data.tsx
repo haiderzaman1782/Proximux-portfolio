@@ -219,6 +219,18 @@ export const founders = [
     focus: "SEO · SEM · Social Media · Content Marketing",
     bio: "SEO, SEM, Social Media, and Content Marketing expert with a passion for driving organic traffic and engagement.",
     initials: "AR"
+  },
+  {
+    name: "Abdul Hanan",
+    title: "shopify expert",
+    mobile: true,
+    number: "+923441693721",
+    whatsapp: "https://wa.me/923441693721",
+    email: "abdulhanan2004@gmail.com",
+    location: "Faisalabad, Pakistan",
+    focus: "shopify · ecommerce · web development",
+    bio: "shopify · ecommerce · web development expert with a passion for driving organic traffic and engagement.",
+    initials: "AH"
   }
 ];
 

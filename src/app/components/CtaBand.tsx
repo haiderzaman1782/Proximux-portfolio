@@ -56,12 +56,12 @@ export function CtaBand({
                 </motion.span>
               </motion.button>
               <a
-                href="mailto:hello@proximux.online"
+                href="mailto:info@proximux.dev"
                 className="w-full sm:w-auto px-8 py-4 rounded-full font-semibold text-sm sm:text-base transition-colors min-h-[44px] touch-manipulation flex items-center justify-center gap-2"
                 style={{ border: '1px solid var(--cta-border)', color: 'var(--cta-text)' }}
               >
                 <Mail size={16} />
-                hello@proximux.online
+                info@proximux.dev
               </a>
             </div>
             <p className="mt-6 text-sm" style={{ color: 'var(--cta-muted)' }}>

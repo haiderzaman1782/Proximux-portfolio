@@ -38,9 +38,9 @@ export function ContactPage() {
                   <CalendarDays size={16} />
                   Book a call
                 </button>
-                <a href="mailto:hello@proximux.online" className="flex items-center gap-3 text-[var(--saas-text)] text-sm mb-4 hover:text-[var(--saas-lime)] transition-colors">
+                <a href="mailto:info@proximux.dev" className="flex items-center gap-3 text-[var(--saas-text)] text-sm mb-4 hover:text-[var(--saas-lime)] transition-colors">
                   <Mail size={16} className="text-[var(--saas-lime)]" />
-                  hello@proximux.online
+                  info@proximux.dev
                 </a>
                 <a href="tel:03194290197" className="flex items-center gap-3 text-[var(--saas-text)] text-sm hover:text-[var(--saas-lime)] transition-colors">
                   <Phone size={16} className="text-[var(--saas-lime)]" />

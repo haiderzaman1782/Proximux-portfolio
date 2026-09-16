@@ -59,9 +59,9 @@ export function Footer() {
               <Phone size={14} />
               03194290197
             </a>
-            <a href="mailto:hello@proximux.online" className="hover:text-[var(--saas-lime)] transition-colors flex items-center gap-2">
+            <a href="mailto:info@proximux.dev" className="hover:text-[var(--saas-lime)] transition-colors flex items-center gap-2">
               <Mail size={14} />
-              hello@proximux.online
+              info@proximux.dev
             </a>
           </div>
         </div>

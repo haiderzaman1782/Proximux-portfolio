@@ -100,7 +100,7 @@ export function BookingModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
             <div className="shrink-0 px-6 py-3 border-t border-[var(--saas-border)] text-center">
               <span className="text-xs text-[var(--saas-muted)]">
                 Trouble loading? Email{' '}
-                <a href="mailto:hello@proximux.online" className="text-[var(--saas-lime)] hover:underline">hello@proximux.online</a>
+                <a href="mailto:info@proximux.dev" className="text-[var(--saas-lime)] hover:underline">info@proximux.online</a>
               </span>
             </div>
           </motion.div>

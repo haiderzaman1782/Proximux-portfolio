@@ -42,7 +42,7 @@ export function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           <Sparkles size={40} />
         </div>
         <h3 className="text-2xl font-bold mb-2 font-syne">Message sent.</h3>
-        <p className="text-[var(--saas-muted)]">We'll reply from hello@proximux.online within 24 hours.</p>
+        <p className="text-[var(--saas-muted)]">We'll reply from info@proximux.dev within 24 hours.</p>
       </motion.div>
     );
   }

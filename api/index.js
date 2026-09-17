@@ -89,23 +89,40 @@ You answer from the numbered CONTEXT provided with each user message. That CONTE
 
 # STYLE
 - Audience is technical buyers (founders, CTOs, product leads). Speak as a competent engineer peer: direct, confident, concrete. No marketing fluff, no hype, no exclamation-mark spam. Use "we" for Proximux.
-- Be concise: 2 to 4 sentences by default. A short bullet list is fine only when listing distinct items such as the four services. Answer the question, then optionally offer one relevant next step.
+- Be concise: 2 to 4 sentences by default. Answer the question, then optionally offer one relevant next step.
+- Write in plain text only. No markdown: no asterisks for bold or italics, no backticks, no headings. The chat shows your text exactly as written, so markdown appears as literal characters.
+- When you give steps or a list of distinct items (such as the process or the four services), put each item on its own line with a line break between them. Never run numbered steps together in one paragraph.
 - Do not include citation markers, reference numbers, or brackets like [1] in your answer.
 - Never use em-dashes. Use commas or periods instead.
 - If you don't know, say so plainly and offer the call. Confidence without grounding is failure.`;
 
 const CHAT_REFUSAL = "I don't have that detail about Proximux. The best way to get a precise answer is to book a 30-minute discovery call at proximux.online, where you'll talk directly to an engineer.";
 
-// The style rule tells the model never to use em-dashes, but LLMs slip. Enforce
-// it deterministically: turn any em/en dash used as punctuation into a comma,
-// then tidy the spacing so the answer reads clean.
-function stripEmDashes(text) {
-  return String(text || '')
-    .replace(/\s*[—–]\s*/g, ', ')
-    .replace(/\s+,/g, ',')
+// The widget renders answers as plain text, so normalize what the model returns:
+// strip markdown it would show literally (**bold**, `code`, # headings, bullets),
+// put each numbered step on its own line, turn em/en dashes into commas, and tidy
+// spacing WITHOUT collapsing the line breaks between list items.
+function cleanAnswer(text) {
+  let t = String(text || '').replace(/\r\n?/g, '\n');
+  // Remove markdown formatting characters.
+  t = t
+    .replace(/\*\*(.+?)\*\*/g, '$1')      // **bold**
+    .replace(/__(.+?)__/g, '$1')          // __bold__
+    .replace(/`([^`]+)`/g, '$1')          // `code`
+    .replace(/^\s{0,3}#{1,6}\s+/gm, '')   // # headings
+    .replace(/^\s*[*\-]\s+/gm, '');       // - / * bullet markers
+  // Break each numbered step onto its own line (e.g. " 2. " -> newline + "2. ").
+  t = t.replace(/[ \t]+([1-9]\d?\.\s)/g, '\n$1');
+  // Em/en dash used as punctuation -> comma.
+  t = t.replace(/\s*[—–]\s*/g, ', ');
+  // Tidy spacing, preserving newlines.
+  t = t
+    .replace(/[ \t]+,/g, ',')
     .replace(/,\s*,/g, ', ')
-    .replace(/\s{2,}/g, ' ')
-    .trim();
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n');
+  return t.trim();
 }
 
 // Greetings and small talk retrieve nothing from the corpus, so without this they
@@ -211,7 +228,7 @@ app.post('/api/chat', async (req, res) => {
     });
     if (!llmRes.ok) throw new Error(`LLM ${llmRes.status}: ${await llmRes.text()}`);
     const data = await llmRes.json();
-    const answer = stripEmDashes((data.choices && data.choices[0] && data.choices[0].message.content) || '');
+    const answer = cleanAnswer((data.choices && data.choices[0] && data.choices[0].message.content) || '');
 
     res.json({
       answer,

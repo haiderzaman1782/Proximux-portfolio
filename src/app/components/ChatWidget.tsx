@@ -21,6 +21,28 @@ const SUGGESTIONS = [
   "Typical timeline for a voice agent?"
 ];
 
+// Turn plain URLs and email addresses in an answer into clickable links, so
+// "book a call" / WhatsApp / email links the bot returns are tappable.
+function linkify(text: string) {
+  const parts = text.split(/(https?:\/\/[^\s]+|[\w.+-]+@[\w-]+\.[\w.-]+)/g);
+  return parts.map((part, i) => {
+    if (/^https?:\/\//.test(part)) {
+      const trailing = part.match(/[.,;:!?)]+$/)?.[0] ?? '';
+      const href = part.slice(0, part.length - trailing.length);
+      return (
+        <span key={i}>
+          <a href={href} target="_blank" rel="noreferrer" className="underline underline-offset-2 break-all hover:opacity-80">{href}</a>
+          {trailing}
+        </span>
+      );
+    }
+    if (/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(part)) {
+      return <a key={i} href={`mailto:${part}`} className="underline underline-offset-2 break-all hover:opacity-80">{part}</a>;
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
@@ -138,7 +160,7 @@ export function ChatWidget({ open, onOpenChange }: { open: boolean; onOpenChange
                         : `max-w-[90%] rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-sm leading-relaxed ${m.error ? 'bg-[rgba(212,24,61,0.08)] border border-[rgba(212,24,61,0.25)] text-[#b3243d]' : 'bg-[var(--saas-inner-bg)] border border-[var(--saas-border)] text-[var(--saas-text)]'}`
                     }
                   >
-                    <div className="whitespace-pre-wrap">{m.text}</div>
+                    <div className="whitespace-pre-wrap">{m.role === 'assistant' ? linkify(m.text) : m.text}</div>
                   </div>
                 </div>
               ))}

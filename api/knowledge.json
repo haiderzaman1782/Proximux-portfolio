@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "about-proximux",
+    "title": "About Proximux",
+    "content": "Proximux is a software engineering studio that ships production AI systems and software. We are a small, senior team and take on few projects so each one gets real senior attention. We build across four disciplines: enterprise RAG and knowledge engines, autonomous AI voice agents, cross-platform mobile apps, and custom full-stack web. Ask Proximux, the assistant on this site, runs on the same Retrieval-Augmented Generation approach we build for clients, so it is a live demo of the product. Get in touch at info@proximux.dev or book a discovery call."
+  },
+  {
+    "slug": "service-rag",
+    "title": "Service: Enterprise RAG & Knowledge Engines",
+    "content": "We build retrieval systems that answer from your data with citations, not hallucinations. Hybrid retrieval combines semantic search, keyword search, and reranking over your documents, wikis, and databases. Every answer is grounded in retrieved source chunks with inline citations so your team can verify each response, and low-confidence queries abstain instead of guessing. Deliverables include an ingestion pipeline (PDF, DOCX, HTML, Notion, Confluence, SQL), a chunking and embedding strategy tuned to your corpus, hybrid vector search with cross-encoder reranking, an inline citation layer, an evaluation harness on your own test set, and an admin dashboard with ingestion monitoring. Typical stack: Python, FastAPI, Pinecone or pgvector, OpenAI or Claude, LangGraph, Redis."
+  },
+  {
+    "slug": "service-voice",
+    "title": "Service: Autonomous AI Voice Agents & Receptionists",
+    "content": "We build end-to-end inbound and outbound voice agents with natural turn-taking and sub-second response. They answer FAQs from your knowledge base, qualify callers, book appointments, write to your CRM live, and hand off to a human with full call context. This is real conversation with barge-in and interruption handling, not a phone menu or IVR. Deliverables include telephony integration (Twilio, Vonage, SIP), a streaming speech-to-text to LLM to text-to-speech pipeline, function-calling for bookings, lookups, and CRM writes, live CRM and calendar sync, and call transcripts, summaries, and analytics. Typical stack: Python, FastAPI, Twilio, Deepgram, ElevenLabs or OpenAI Realtime, WebSockets."
+  },
+  {
+    "slug": "service-mobile",
+    "title": "Service: Cross-Platform Mobile Apps",
+    "content": "We build production mobile apps in React Native and Expo: one codebase shipped to both the App Store and Play Store, with native performance. Apps are offline-first, push-enabled, and wired to a typed API, and we own the full lifecycle from architecture to build pipeline (EAS) to store submission and review handling. Deliverables include an iOS and Android app from one codebase, a typed API client with end-to-end types shared with the backend, an offline cache with background sync, push notifications, auth, and in-app payments, CI/CD via EAS with over-the-air updates, and store submission. Typical stack: React Native, Expo, TypeScript, FastAPI, Postgres, EAS."
+  },
+  {
+    "slug": "service-web",
+    "title": "Service: Custom Full-Stack Web Engineering",
+    "content": "We build typed, tested, observable web applications from database schema to production deploy, on a Python and FastAPI backend with a modern React or Next.js front end. Everything is typed end to end, tested on critical paths, and deployed to infrastructure you own from day one. Deliverables include a FastAPI backend with a Postgres schema and migrations, REST and WebSocket APIs, background jobs and queues, a React or Next.js front end, auth with RBAC and audit logging, observability (logs, metrics, tracing) with CI/CD and infrastructure as code, and a full repo and infrastructure handover. Typical stack: Python, FastAPI, Postgres, React, TypeScript, Docker."
+  },
+  {
+    "slug": "process",
+    "title": "How we work: our process",
+    "content": "Our process has three steps. First, a Discovery Call: we map the problem, constraints, and success metrics, then send a fixed-scope proposal with a timeline and price, no open-ended hourly billing. Second, Blueprint and Sandbox Demo: before the full build we ship a working sandbox, a real running slice of the system, so you validate on something real instead of slides, and you get an architecture diagram plus an interactive sandbox. Third, Production and Handover: we build, test, and deploy to infrastructure you own, and you get the repo, docs, and a walkthrough, with an optional retainer for iteration."
+  },
+  {
+    "slug": "pricing-model",
+    "title": "How we price",
+    "content": "Pricing is fixed-scope and milestone-based, not open-ended hourly billing. You approve scope and price up front, and change requests are quoted separately so the number never drifts. We give a fixed timeline and price in the proposal after a discovery call, tailored to your project. For a precise quote and timeline, book a discovery call, where a founder gives a fixed-scope proposal."
+  },
+  {
+    "slug": "ownership-ip",
+    "title": "Code ownership and IP",
+    "content": "You own the code and IP, 100%. On final payment, all source code, IP, and infrastructure transfer to you. We keep nothing and lock you into nothing, and we can sign your NDA before the discovery call. After launch there is an optional retainer for iteration, monitoring, and support, with no lock-in: the repo and docs are yours to hand to any team."
+  },
+  {
+    "slug": "data-security",
+    "title": "What happens to your data",
+    "content": "Your data stays in your own infrastructure and accounts wherever possible. We can run fully in your cloud using your own OpenAI, Pinecone, or AWS keys. Nothing you share is used to train any model."
+  },
+  {
+    "slug": "demos",
+    "title": "Live demos",
+    "content": "Two demos are live right now. Ask Proximux is this chat assistant: it answers questions about Proximux using full-text retrieval over our own content, the same RAG approach we build for clients. The second is a sentiment model we fine-tuned ourselves: a BERT model fine-tuned with LoRA (parameter-efficient fine-tuning) on real review data, served over FastAPI with a live confidence score, supporting single review, batch, and CSV upload. The voice agent and mobile app demos are coming soon and are not live yet."
+  },
+  {
+    "slug": "fit-and-proof",
+    "title": "Are we a fit, and how to verify we can build it",
+    "content": "To see that we can build what you need, run the live demos on the Work page and look at our real project portfolio. Before any full engagement we ship a working sandbox so you validate on real output, not a pitch. If we are not a good fit, we will say so on the first call and point you to someone better. We take on few projects so the ones we take get real senior attention."
+  },
+  {
+    "slug": "engagement-contact",
+    "title": "How to get started, hire us, and contact us",
+    "content": "The way to start is a Technical Discovery Call, where a founder maps your problem and returns a fixed-scope proposal with a timeline and price. There are three ways to reach us: email info@proximux.dev, WhatsApp https://wa.me/923069262541, or book a call directly at https://cal.com/haider-zaman-exnwci/30min. If you want to hire us or book a call, use the WhatsApp and email links above. If a request falls within our four disciplines (RAG and knowledge engines, AI voice agents, cross-platform mobile, and full-stack web), we will confirm fit and guide you to booking a call. Requests clearly outside those areas, such as hardware or design-only work, are not our focus and we will say so honestly."
+  },
+  {
+    "slug": "portfolio-highlights",
+    "title": "Portfolio highlights",
+    "content": "Selected work includes an AI-powered ordering platform with a contextual AI chat assistant, round-robin rider assignment, real-time notifications, and Google OAuth (Python, FastAPI); a shipped iOS AI emoji and sticker app with a job-based async pipeline over image and video AI APIs, gated by a StoreKit 2 credit wallet (Swift, TCA, Firebase); a multi-tenant, Shopify-inspired e-commerce platform with dynamic subdomain routing and the Shopify Storefront GraphQL API (Next.js, React Server Components); a cross-platform email sequencer sharing UI across mobile and web (React Native, React, OAuth 2.0); and the fine-tuned BERT plus LoRA sentiment analyzer served via FastAPI with a Streamlit dashboard."
+  },
+  {
+    "slug": "location-and-remote",
+    "title": "Where we are based and working remotely",
+    "content": "Proximux is based in Faisalabad, Pakistan, and works with clients remotely. Everything runs over email and scheduled calls, so location is not a barrier to working together. Reach us by email at info@proximux.dev, on WhatsApp at https://wa.me/923069262541, or book a call at https://cal.com/haider-zaman-exnwci/30min."
+  },
+  {
+    "slug": "support-and-maintenance",
+    "title": "Support and maintenance after launch",
+    "content": "After launch we offer an optional retainer for iteration, monitoring, and support. There is no lock-in: the repository and documentation are yours, so you can hand the project to any team at any time. If you prefer, you can take the handover and run it entirely yourself."
+  },
+  {
+    "slug": "confidentiality-and-nda",
+    "title": "NDAs, confidentiality, and your idea",
+    "content": "Your idea and information are treated as confidential, and we can sign your NDA before the discovery call. Your data stays in your own infrastructure and accounts wherever possible, we can run fully in your cloud using your own keys, and nothing you share is used to train any model."
+  },
+  {
+    "slug": "why-choose-proximux",
+    "title": "Why work with Proximux and what makes us different",
+    "content": "We are a small, senior team and take on few projects so each one gets real senior attention. Before any full build we ship a working sandbox, a real running slice of the system, so you validate on real output instead of a pitch. Pricing is fixed-scope, not open-ended hourly, and on final payment you own all source code, IP, and infrastructure. Our systems are grounded and verifiable, for example this assistant answers only from our real content, not marketing claims."
+  },
+  {
+    "slug": "talk-to-a-human",
+    "title": "Talking to a person, hiring us, and booking a call",
+    "content": "You can talk to a founder directly by booking a Technical Discovery Call, where we map your problem and return a fixed-scope proposal with a timeline and price. Reach us any of three ways: email info@proximux.dev, WhatsApp https://wa.me/923069262541, or book a call at https://cal.com/haider-zaman-exnwci/30min. To hire us or book a call, the fastest options are the WhatsApp and email links. If your project fits our four disciplines (RAG and knowledge engines, AI voice agents, cross-platform mobile, and full-stack web), we will confirm fit and point you to booking a call."
+  },
+  {
+    "slug": "timelines",
+    "title": "Typical timelines",
+    "content": "Every project gets a fixed timeline in the proposal after a discovery call, not an open-ended 'it depends.' Timelines vary by project type: a RAG knowledge engine is usually the fastest to ship, followed by voice agents and full-stack web apps, with mobile apps typically taking the longest because of App Store and Play Store review. For the exact timeline on your project, book a discovery call and we will scope it."
+  },
+  {
+    "slug": "team",
+    "title": "The team behind Proximux",
+    "content": "Proximux is a small, senior team based in Faisalabad, Pakistan. Haider Zaman is the Lead AI Engineer and builds the retrieval and voice systems: RAG pipelines, autonomous voice agents, and LLM systems in Python and FastAPI. Ramish Anwar is the Lead Mobile Engineer and builds the mobile and full-stack work: React Native, iOS and Android, full-stack web, and CI/CD. The team also includes specialists in digital marketing (SEO, SEM, social, and content) and in Shopify and e-commerce."
+  }
+]

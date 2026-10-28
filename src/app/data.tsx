@@ -285,13 +285,13 @@ export const projects: Project[] = [
     tags: ["Python", "FastAPI", "AI Chat", "Real-time", "OAuth"],
     featured: true
   },
-  {
-    title: "IOS - AI Emoji & Sticker App",
-    category: "iOS · AI",
-    description: "A shipped iOS app that generates personalized emojis, stickers, and short videos through a job-based async pipeline over third-party image and video AI APIs, gated by a StoreKit 2 credit wallet.",
-    tags: ["Swift", "TCA", "Firebase", "StoreKit 2", "AI APIs"],
-    featured: true
-  },
+  // {
+  //   title: "IOS - AI Emoji & Sticker App",
+  //   category: "iOS · AI",
+  //   description: "A shipped iOS app that generates personalized emojis, stickers, and short videos through a job-based async pipeline over third-party image and video AI APIs, gated by a StoreKit 2 credit wallet.",
+  //   tags: ["Swift", "TCA", "Firebase", "StoreKit 2", "AI APIs"],
+  //   featured: true
+  // },
   {
     title: "Multi-Tenant E-Commerce Platform",
     category: "Web · SaaS",
